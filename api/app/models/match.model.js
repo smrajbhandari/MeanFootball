@@ -89,4 +89,4 @@ const MatchSchema = mongoose.Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('Match', UserSchema);
+module.exports = mongoose.model('Match', MatchSchema);
