@@ -19,7 +19,7 @@ import { AdminComponent } from './admin.component';
     CommonModule,
     MaterialModule
   ],
-  exports: [ CreateMatchComponent, EventsComponent, CommentaryComponent, StatisticsComponent, LineUpComponent],
+  exports: [ AdminComponent,CreateMatchComponent, EventsComponent, CommentaryComponent, StatisticsComponent, LineUpComponent],
   bootstrap: [],
 
 })
