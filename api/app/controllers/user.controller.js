@@ -16,13 +16,13 @@ exports.create = (req, res) => {
         }));
 };
 
-exports.checkEmailNotTaken = (req, res) => {
+exports.checkExistingEmail = (req, res) => {
     User.findOne({email: req.query.email})
         .then(data => {
             if (data)
-                res.json({emailNotTaken: false})
+                res.status(401).json({ emailExists: true });
             else
-                res.json({emailNotTaken: true})
+                res.json({ emailExists: false });
         })
 };
 
