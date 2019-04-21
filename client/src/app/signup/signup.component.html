@@ -4,24 +4,30 @@
     <mat-card-content>
       <mat-form-field class="input-full-width">
         <input matInput placeholder="First Name" formControlName="firstName" required>
+        <mat-error *ngIf="submitted && f.firstName.hasError('required')">First name is required</mat-error>
       </mat-form-field>
 
       <mat-form-field class="input-full-width">
         <input matInput placeholder="Last Name" formControlName="lastName" required> 
+        <mat-error *ngIf="submitted && f.lastName.hasError('required')">Last name is required</mat-error>
       </mat-form-field>
 
       <mat-form-field class="input-full-width">
         <input matInput placeholder="Email" formControlName="email" required>
-        <!-- <mat-error *ngIf="!myForm.get('email').valid">Invalid Email</mat-error> -->
+        <mat-error *ngIf="submitted && f.email.hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="submitted && f.email.hasError('email')">Email is not valid</mat-error>
+        <mat-error *ngIf="f.email.hasError('emailExists')">Email is already taken</mat-error>
       </mat-form-field>
 
       <mat-form-field class="input-full-width">
         <input type="password" matInput placeholder="Password" formControlName="password" required>
+        <mat-error *ngIf="submitted && f.password.hasError('required')">Password is required</mat-error>
+        <mat-error *ngIf="submitted && f.password.hasError('minlength')">Password must be at least 6 characters</mat-error>
       </mat-form-field>
 
       <mat-form-field class="input-full-width">
-        <input type="password" matInput placeholder="Confirm Password" formControlName="confirmPassword" required>
-        <!-- <mat-error *ngIf="myForm.hasError('notSame')">Passwords do not match</mat-error>   -->
+        <input type="password" matInput placeholder="Confirm Password" formControlName="confirmPassword"  [errorStateMatcher]="matcher" required>
+        <mat-error *ngIf="submitted && f.confirmPassword.hasError('mustMatch')">Passwords do not match</mat-error>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>
