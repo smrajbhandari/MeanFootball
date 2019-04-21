@@ -10,9 +10,9 @@ import { CommentaryComponent } from '../commentary/commentary.component';
 
 const routes: Routes = [
   // {
-  //   path: 'admin',
-  //   component: AdminComponent,
-  //   children: [
+    // path: 'admin',
+    // component: AdminComponent,
+    // children: [
       {
         path: 'events',
         component: EventsComponent,
