@@ -1,13 +1,11 @@
 <p>main works!</p>
 
- <mat-grid-list cols="2" rowHeight="2:1">
-  <mat-grid-tile rowspan="3" >LIST-MATCH<app-list-matches></app-list-matches></mat-grid-tile>
-  <mat-grid-tile>DETAIL-MATCH<app-match-details></app-match-details></mat-grid-tile>
-  <mat-grid-tile>UPDATE-MATCH
-    <!-- <app-admin></app-admin>
-    suagot help me wiht this part works -->
-  </mat-grid-tile>
-  <mat-grid-tile>CREATE-MATCH<app-create-match></app-create-match></mat-grid-tile>
+ <mat-grid-list cols="3" rowHeight="2:1">
+  <mat-grid-tile rows="3" ><app-list-matches></app-list-matches></mat-grid-tile>
+  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile><app-match-details></app-match-details></mat-grid-tile>
+  <mat-grid-tile>update match user</mat-grid-tile>
+  <mat-grid-tile>create</mat-grid-tile>
 </mat-grid-list>
 
   <!-- <p>
