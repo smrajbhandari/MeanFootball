@@ -10,7 +10,7 @@ import { AdminComponent } from '../admin.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'a',
     component: AdminComponent,
     //     canActivate: [CheckUserGuard]
     children: [

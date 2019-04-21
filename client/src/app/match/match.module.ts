@@ -8,6 +8,8 @@ import { MatchDetailsComponent } from './match-details/match-details.component';
   declarations: [MatchComponent, ListMatchesComponent, MatchDetailsComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [MatchComponent, ListMatchesComponent, MatchDetailsComponent],
+  bootstrap: [],
 })
 export class MatchModule { }

@@ -2,14 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MainComponent } from './main.component';
 import { MaterialModule } from '../material.module';
-import { AdminRoutingModule } from '../admin/admin-routing/admin-routing.module';
+import { MatchModule } from '../match/match.module';
+import { AdminModule } from '../admin/admin.module';
 
 @NgModule({
   declarations: [MainComponent],
   imports: [
-    AdminRoutingModule,
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    MatchModule,
+    AdminModule
   ],
   exports: [ MainComponent],
   bootstrap: [],

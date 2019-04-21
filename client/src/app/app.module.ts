@@ -13,6 +13,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import {MainModule} from './main/main.module'
 
 
 @NgModule({
@@ -27,7 +28,7 @@ import { AppRoutingModule } from './app-routing.module';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,MainModule
     ],
   providers: [],
   bootstrap: [AppComponent]

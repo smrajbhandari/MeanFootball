@@ -13,13 +13,13 @@ import { AdminComponent } from './admin.component';
 
 
 @NgModule({
-  declarations: [ CreateMatchComponent, EventsComponent, CommentaryComponent, StatisticsComponent, LineUpComponent, AdminComponent],
+  declarations: [AdminComponent, CreateMatchComponent, EventsComponent, CommentaryComponent, StatisticsComponent, LineUpComponent, AdminComponent],
   imports: [
     AdminRoutingModule,
     CommonModule,
     MaterialModule
   ],
-  exports: [ CreateMatchComponent, EventsComponent, CommentaryComponent, StatisticsComponent, LineUpComponent],
+  exports: [AdminComponent, CreateMatchComponent, EventsComponent, CommentaryComponent, StatisticsComponent, LineUpComponent],
   bootstrap: [],
 
 })
