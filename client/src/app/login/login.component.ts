@@ -8,10 +8,10 @@ import { UserService } from '../user.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+  myForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private userService: UserService) {
-    this.loginForm =  formBuilder.group({
+    this.myForm =  formBuilder.group({
       'email': [''],
       'password': ['']
     });
@@ -21,7 +21,20 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    const user = this.loginForm.value;
+    const user = this.myForm.value;
     console.log(user);
+
+    if (this.myForm.valid) {
+      return this.userService.login(user)
+        .subscribe(data => {
+          if (data) {
+            console.log('logged in');
+          } else {
+            console.log('wrong username or password');
+          }
+        });
+    } else {
+      console.log('Invalid form');
+    }
   }
 }
