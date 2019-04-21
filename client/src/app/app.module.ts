@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-// import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -12,12 +11,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { AppRoutingModule } from './app-routing.module';
 
-const routes: Routes = [
-  { path: "", component: AppComponent },
-  { path: "admin", loadChildren: './admin/admin.module#AdminModule' },
-];
 
 
 @NgModule({
@@ -28,13 +23,12 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    // AppRoutingModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(routes, {preloadingStrategy: PreloadAllModules})
-  ],
+    ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

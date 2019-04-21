@@ -149,3 +149,4 @@ testem.log
 #System Files
 
 # End of https://www.gitignore.io/api/mean,macos
+api/config/database.config.js

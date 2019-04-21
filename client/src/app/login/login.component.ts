@@ -28,7 +28,9 @@ export class LoginComponent implements OnInit {
       return this.userService.login(user)
         .subscribe(data => {
           if (data) {
+            localStorage.setItem('_token',data.toString());
             console.log('logged in');
+
           } else {
             console.log('wrong username or password');
           }

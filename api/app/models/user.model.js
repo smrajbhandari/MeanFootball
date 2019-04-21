@@ -4,7 +4,9 @@ const UserSchema = mongoose.Schema({
     firstName: String,
     lastName: String,
     email: String,
-    password: String
+    password: String,
+    isAdmin:{ type: Boolean, default: false }
+    
 }, {
     timestamps: true
 });

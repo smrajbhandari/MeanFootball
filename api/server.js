@@ -5,6 +5,7 @@ const port = process.env.PORT || 3000;
 
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
+const checkAuth = require('./app/middleware/check-authentication');
 
 app.use(cors());
 app.use(express.json());
@@ -19,6 +20,9 @@ mongoose.connect(dbConfig.url, {
     console.log('Could not connect to the database. Exiting now...', err);
     process.exit();
 });
+
+
+app.all('api/*', checkAuth);
 
 app.get('/', (req, res) => {
     res.json({"message": "Welcome to API using Node."});
