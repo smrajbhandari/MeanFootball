@@ -5,6 +5,7 @@ import {
     MatButtonModule,
     MatInputModule,
     MatCardModule,
+    MatGridListModule,
     MatSnackBarModule
 } from '@angular/material';
 
@@ -12,6 +13,7 @@ import {
   imports: [
     MatButtonModule,
     MatTabsModule,
+    MatGridListModule,
     MatSnackBarModule
   ],
   exports: [
@@ -19,6 +21,7 @@ import {
     MatButtonModule,
     MatInputModule,
     MatCardModule,
+    MatGridListModule,
     MatSnackBarModule
   ]
 })
