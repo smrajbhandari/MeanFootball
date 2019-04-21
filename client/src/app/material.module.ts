@@ -1,7 +1,10 @@
 import {NgModule} from '@angular/core';
 
 import {
-    MatButtonModule, MatTabsModule
+ MatTabsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatCardModule
 } from '@angular/material';
 
 @NgModule({
@@ -9,7 +12,10 @@ import {
     MatButtonModule,MatTabsModule
   ],
   exports: [
-    MatButtonModule,MatTabsModule
+    MatTabsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatCardModule
   ]
 })
 export class MaterialModule {}

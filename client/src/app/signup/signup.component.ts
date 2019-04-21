@@ -9,16 +9,21 @@ import { UserService } from '../user.service';
   styleUrls: ['./signup.component.scss']
 })
 export class SignupComponent implements OnInit {
-  signupForm: FormGroup;
+  myForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private userService: UserService) {
-    this.signupForm = formBuilder.group({
-      'firstName': ['Vorleak'],
-      'lastName': ['Chy'],
-      'email': ['vorleak.chy@gmail.com', [], [this.validateEmailNotTaken.bind(this)]],
-      'password': ['12345'],
-      'confirmPassword': ['12345'],
-      'acceptTerm': [true]
+    this.myForm = formBuilder.group({
+      'firstName': ['', Validators.required],
+      'lastName': ['', Validators.required],
+      'email': ['', [
+         Validators.required, 
+         Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
+        ]], 
+        // [this.validateEmailNotTaken.bind(this)]],
+      'password': ['', Validators.required],
+      'confirmPassword': ['', [Validators.required]],
+      // 'confirmPassword': ['', [Validators.required, this.validatePasswords]],
+      // 'acceptTerm': [true]
     });
   }
 
@@ -26,14 +31,17 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    const user = this.signupForm.value;
-    return this.userService.create(user)
-      .subscribe(data => console.log(data));
+    const user = this.myForm.value;
+
+    if (this.myForm.valid) {
+      return this.userService.create(user)
+        .subscribe(data => console.log(data));
+    } else {
+      console.log('Invalid form');
+    }
   }
 
   validateEmailNotTaken(control: FormControl): Promise<any> | Observable<any> {
-    console.log(control);
-    
     const promise = new Promise<any>(
       (resolve, reject) => {
         this.userService.checkEmailNotTaken(control.value)
@@ -47,4 +55,10 @@ export class SignupComponent implements OnInit {
     return promise;
   }
 
+  // validatePasswords(group: FormGroup): { [s: string]: boolean } {
+  //   const pass = group.controls.password.value;
+  //   const confirmPass = group.controls.confirmPassword.value;
+
+  //   return pass === confirmPass ? null : { notSame: true };
+  // }
 }
