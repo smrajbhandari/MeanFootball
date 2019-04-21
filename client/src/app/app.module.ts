@@ -13,6 +13,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TokenInterceptor } from './token.interceptor';
+import { AdminModule } from './admin/admin.module';
 
 import {MainModule} from './main/main.module'
 
@@ -22,6 +23,7 @@ import {MainModule} from './main/main.module'
     AppComponent,
     SignupComponent,
     LoginComponent
+    
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,9 @@ import {MainModule} from './main/main.module'
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    ReactiveFormsModule,MainModule
+    ReactiveFormsModule,
+    AdminModule,
+    MainModule
     ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

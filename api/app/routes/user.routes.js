@@ -3,7 +3,7 @@ module.exports = (app) => {
 
     app.post('/users', users.create);
 
-    app.get('/users/check_email_not_taken', users.checkEmailNotTaken);
+    app.get('/users/check_existing_email', users.checkExistingEmail);
 
     app.post('/users/login', users.login);
 }

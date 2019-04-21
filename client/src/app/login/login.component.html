@@ -4,10 +4,13 @@
     <mat-card-content>
       <mat-form-field class="input-full-width">
         <input matInput placeholder="Email" formControlName="email" required>
+        <mat-error *ngIf="submitted && f.email.hasError('required')">Email is required</mat-error>
+        <mat-error *ngIf="submitted && f.email.hasError('email')">Email is not valid</mat-error>
       </mat-form-field>
 
       <mat-form-field class="input-full-width">
         <input type="password" matInput placeholder="Password" formControlName="password" required>
+        <mat-error *ngIf="submitted && f.password.hasError('required')">Password is required</mat-error>
       </mat-form-field>
     </mat-card-content>
     <mat-card-actions>

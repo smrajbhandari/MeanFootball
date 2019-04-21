@@ -14,9 +14,9 @@ export class UserService {
       .post(`${this.API_URL}/users`, user);
   }
 
-  checkEmailNotTaken(email: string) {
+  checkExistingEmail(email: string) {
     return this.http
-      .get(`${this.API_URL}/users/check_email_not_taken?email=${email}`);
+      .get(`${this.API_URL}/users/check_existing_email?email=${email}`);
   }
 
   login(user) {

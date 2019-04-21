@@ -10,16 +10,9 @@ import { AdminComponent } from '../admin.component';
 
 const routes: Routes = [
   {
-    path: 'a',
+    path: 'admin',
     component: AdminComponent,
-    //     canActivate: [CheckUserGuard]
     children: [
-      {
-        path: 'create',
-        component: CreateMatchComponent
-        //     canActivate: [CheckUserGuard]
-
-      },
       {
         path: 'events',
         component: EventsComponent,
@@ -38,6 +31,10 @@ const routes: Routes = [
       }
     ]
   },
+  {
+    path:'create',
+    component:CreateMatchComponent
+  }
 
 ];
 
