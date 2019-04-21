@@ -2,8 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const port = process.env.PORT || 3000;
-
-const dbConfig = require('./config/database.config.js');
+require('dotenv').config()
 const mongoose = require('mongoose');
 const checkAuth = require('./app/middleware/check-authentication');
 
@@ -11,8 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose.Promise = global.Promise;
-
-mongoose.connect(dbConfig.url, {
+mongoose.connect(process.env.URL, {
     useNewUrlParser: true
 }).then(() => {
     console.log("Successfully connected to the database");    
