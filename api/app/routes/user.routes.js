@@ -4,4 +4,6 @@ module.exports = (app) => {
     app.post('/users', users.create);
 
     app.get('/users/check_email_not_taken', users.checkEmailNotTaken);
+
+    app.post('/users/login', users.login);
 }

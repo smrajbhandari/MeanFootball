@@ -24,3 +24,8 @@ exports.checkEmailNotTaken = (req, res) => {
                 res.json({emailNotTaken: true})
         })
 };
+
+exports.login = (req, res) => {
+    User.findOne({email: req.body.email, password: req.body.password})
+        .then(data => res.json(data));
+}

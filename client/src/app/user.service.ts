@@ -18,4 +18,9 @@ export class UserService {
     return this.http
       .get(`${this.API_URL}/users/check_email_not_taken?email=${email}`);
   }
+
+  login(user) {
+    return this.http
+      .post(`${this.API_URL}/users/login`, user);
+  }
 }
