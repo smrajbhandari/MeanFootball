@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   myForm: FormGroup;
-  loading: boolean = false;
   submitted: boolean = false;
 
   constructor(
@@ -43,13 +42,11 @@ export class SignupComponent implements OnInit {
       return;
     }
 
-    this.loading = true;
-
     return this.userService.create(this.myForm.value)
       .subscribe(data => {
         this.router.navigateByUrl('login');
       }, error => {
-        this.loading = false;
+        console.log(error);
       });
   }
 
