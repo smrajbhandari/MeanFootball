@@ -1,5 +1,8 @@
 module.exports = (app) => {
     const users = require('../controllers/user.controller.js');
+    const checkAuth = require('../middleware/check-authentication');
+
+    app.all('/api/*', checkAuth);
 
     app.post('/users', users.create);
 

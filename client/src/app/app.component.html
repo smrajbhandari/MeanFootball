@@ -1,3 +1,23 @@
 <signup></signup>
 <login></login>
-<router-outlet></router-outlet>
+
+<!-- <ul>
+    <li style="display:inline;">
+      <a mat-tab-link [routerLink]="['']">Home</a>
+    </li>
+    ||
+    <li style="display:inline;">
+      <a mat-tab-link [routerLink]="['admin']">Users</a>
+    </li>
+  <button mat-button color="accent">Accent</button>
+
+  </ul> -->
+
+<nav mat-tab-nav-bar>
+    <a mat-tab-link [routerLink]="['admin','create']">Users</a>
+    
+  <a mat-tab-link [routerLink]="['admin']">Users</a>
+
+</nav>
+
+  <router-outlet></router-outlet>
