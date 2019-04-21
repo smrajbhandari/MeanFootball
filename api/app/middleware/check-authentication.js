@@ -1,11 +1,9 @@
 const jwt = require("jsonwebtoken");
-const dbConfig = require('../../config/database.config.js');
 
 module.exports = (req, res, next) => {
   try {
-    const token = req.headers.Authorization;
-    var decoded=jwt.verify(token, dbConfig.privateKey);
-    req._isAdmin=decoded._isAdmin;
+    const token = req.get("Authorization");
+    var decoded=jwt.verify(token, process.env.PRIVATE_KEY);
     next();
   } catch (error) {
     res.status(401).json({ message: "Auth failed!" });
