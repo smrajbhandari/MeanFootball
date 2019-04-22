@@ -6,6 +6,7 @@ require('dotenv').config()
 const mongoose = require('mongoose');
 const checkAuth = require('./app/middleware/check-authentication');
 
+app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 app.use(express.json());
 
@@ -27,5 +28,7 @@ app.get('/', (req, res) => {
 });
 
 require('./app/routes/user.routes.js')(app);
+require('./app/routes/match.routes.js')(app);
+
 
 app.listen(port, () => `Server is listening on port ${port}`);

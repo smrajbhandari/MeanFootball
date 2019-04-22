@@ -15,7 +15,7 @@ const MatchSchema = mongoose.Schema({
         ],
         substitutes: [
             {
-                miniute: Number,
+                minute: Number,
                 playerIn: String,
                 playerOut: String
             }

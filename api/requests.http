@@ -1,0 +1,59 @@
+###
+# Add Match
+POST http://localhost:3000/api/match HTTP/1.1
+Content-Type: application/json; charset=utf-8
+
+{
+    "leagueName":"EPL123",
+      "startDateTime":"Sun Apr 21 2019 21:42:15 GMT-0500 (Central Daylight Time)" ,
+        "homeTeam":{
+            "name": "MANU123",
+            "coach": "couch123",
+            "players": [
+            {
+                "name": "N123",
+                "position": "P123",
+                "number": "123"
+            },
+             {
+                "name": "N223",
+                "position": "P223",
+                "number": "223"
+            },
+             {
+                "name": "N323",
+                "position": "P323",
+                "number": "323"
+            }] 
+            },
+        "awayTeam":{
+             "name": "chel23",
+            "coach": "couch223",
+            "players": [
+            {
+                "name": "N1123",
+                "position": "P1123",
+                "number": "23"
+            },
+             {
+                "name": "N2223",
+                "position": "P2223",
+                "number": "2223"
+            },
+             {
+                "name": "N3323",
+                "position": "P3323",
+                "number": "3323"
+            }]
+        }
+}
+
+
+###
+# Get All Matches
+Get http://localhost:3000/api/match HTTP/1.1
+
+
+###
+# Find Match By Id
+Get http://localhost:3000/api/match/5cbd2baff4ee6b3d241ca5a7 HTTP/1.1

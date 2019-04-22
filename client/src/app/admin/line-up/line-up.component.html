@@ -1,3 +1,25 @@
-<p>
-  line-up works!
-</p>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="substitution-form">
+  <mat-card>
+    <mat-card-title>Substitution</mat-card-title>
+    <mat-card-content>
+        <label id="side-radio-group-label">Min: {{minute}}'</label><br><br>
+        <label id="side-radio-group-label">Select side</label>
+      <mat-radio-group aria-labelledby="side-radio-group-label" class="side-radio-group" formControlName="side"  required>
+        <mat-radio-button class="side-radio-button" *ngFor="let side of sides" [value]="side">
+          {{side}}
+        </mat-radio-button>
+      </mat-radio-group>
+      <mat-form-field class="input-full-width">
+          <input matInput placeholder="Player In" formControlName="playerIn" required>
+        </mat-form-field>
+        <mat-form-field class="input-full-width">
+            <input matInput placeholder="Player Out" formControlName="playerOut" required>
+          </mat-form-field>
+      
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary">Save</button>
+    </mat-card-actions>
+  </mat-card>
+
+</form>
