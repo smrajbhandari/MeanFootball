@@ -7,32 +7,31 @@ exports.addMatch = (req, res) => {
     const match = new Match({
         leagueName: req.body.leagueName,
         startDateTime: req.body.startDateTime,
-        homeTeam:req.body.homeTeam,
+        homeTeam: req.body.homeTeam,
         awayTeam: req.body.awayTeam
     });
 
 
     match.save()
-    .then(data => res.send(data))
-    .catch(err => res.status(500).send({
-        message: err.message
-    }));
-   
+        .then(data => res.send(data))
+        .catch(err => res.status(500).send({
+            message: err.message
+        }));
+
 }
 
 
 exports.getAllMatches = (req, res) => {
     Match.find({})
-    .then(data => {
+        .then(data => {
             res.json(data);
-    })
+        })
 
 }
 
 exports.findMatchById = (req, res) => {
-    console.log(req.params.id);
-Match.findOne({_id: ObjectId(req.params.id)})
+    Match.findOne({ _id: ObjectId(req.params.id) })
         .then(data => {
-                res.json(data);
+            res.json(data);
         })
-    }
+}
