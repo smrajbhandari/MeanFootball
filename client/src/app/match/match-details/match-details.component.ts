@@ -13,9 +13,7 @@ export class MatchDetailsComponent implements OnInit {
   ngOnInit() {
     this.matchDetailService.emitter.subscribe(
       data => {this.matchId = data;
-          console.log("MatchDetailsComponent");
-          console.log(this.matchId);
-          //this.onGet();
+          console.log("MatchDetailsComponent Receive the _id="+this.matchId);
       }
   );
   }

@@ -18,14 +18,14 @@ export class ListMatchesComponent implements OnInit {
   constructor(private matchService:MatchService,private matchDetailService:MatchDetailService ) { 
     this.matchService.findAll().subscribe(
       data=>{
-      console.log(data);
+      //console.log(data);
+      //here is the data that i receive
       this.dataSource = data;
       }) ;
   }
 
   getRecord(element:any){
-    console.log("here your request BOOSSS");
-    console.log(element._id);
+    console.log("this is the selected _ID="+element._id);
     this.matchDetailService.emitValue(element._id);
   }
 //delete 
