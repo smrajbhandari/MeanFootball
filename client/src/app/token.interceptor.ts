@@ -13,7 +13,7 @@ export class TokenInterceptor implements HttpInterceptor {
 
     request = request.clone({
       setHeaders: {
-        Authorization: localStorage.getItem('_token')
+        Authorization: localStorage.getItem('_token') || ''
       }
     });
     return next.handle(request);
