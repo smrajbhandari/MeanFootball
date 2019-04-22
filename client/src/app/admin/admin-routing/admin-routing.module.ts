@@ -6,6 +6,7 @@ import { EventsComponent } from '../events/events.component';
 import { LineUpComponent } from '../line-up/line-up.component';
 import { StatisticsComponent } from '../statistics/statistics.component';
 import { CommentaryComponent } from '../commentary/commentary.component';
+import { TeamComponent } from '../team/team.component';
 // import { AdminComponent } from '../admin.component';
 
 const routes: Routes = [
@@ -34,7 +35,8 @@ const routes: Routes = [
   {
     path:'create',
     component:CreateMatchComponent
-  }
+  },
+  { path: 'teams', component: TeamComponent }
 
 ];
 

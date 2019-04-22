@@ -1,0 +1,10 @@
+<h1 mat-dialog-title>Delete Team</h1>
+<div mat-dialog-content>
+  <p>Are you sure, you want to delete this team?</p>
+  <p>Name: <strong>{{data.name}}</strong></p>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onDelete()" color="warn">Delete</button>
+  <button mat-button tabindex="-1" mat-dialog-close>Cancel</button>
+</div>

@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Add new Team</h1>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content>
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name" required>
+      <mat-error *ngIf="submitted && f.name.hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Coach" formControlName="coach" required>
+      <mat-error *ngIf="submitted && f.coach.hasError('required')">Coach is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button [type]="submit" color="primary">Save</button>
+    <button mat-button tabindex="-1" mat-dialog-close>Cancel</button>
+  </div>
+</form>
