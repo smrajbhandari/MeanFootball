@@ -22,7 +22,7 @@ exports.addMatch = (req, res) => {
 
 
 exports.getAllMatches = (req, res) => {
-    Match.find({})
+    Match.find({},{ leagueName: 1, startDateTime: 1,"homeTeam.name":1,"awayTeam.name":1 })
         .then(data => {
             res.json(data);
         })
