@@ -14,14 +14,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [ CreateMatchComponent, EventsComponent, CommentaryComponent, StatisticsComponent, LineUpComponent, AdminComponent],
+  declarations: [AdminComponent, CreateMatchComponent, EventsComponent, CommentaryComponent, StatisticsComponent, LineUpComponent, AdminComponent],
   imports: [
     AdminRoutingModule,
     CommonModule,
     MaterialModule,
     ReactiveFormsModule
   ],
-  exports: [ AdminComponent,CreateMatchComponent, EventsComponent, CommentaryComponent, StatisticsComponent, LineUpComponent],
+  exports: [AdminRoutingModule, AdminComponent,CreateMatchComponent, EventsComponent, CommentaryComponent, StatisticsComponent, LineUpComponent],
   bootstrap: [],
 
 })

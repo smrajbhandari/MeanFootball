@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { TokenInterceptor } from './token.interceptor';
 import { AdminModule } from './admin/admin.module';
 
+import {MainModule} from './main/main.module'
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AdminModule } from './admin/admin.module';
     MaterialModule,
     HttpClientModule,
     ReactiveFormsModule,
-    AdminModule
+    AdminModule,
+    MainModule
     ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
