@@ -57,3 +57,75 @@ Get http://localhost:3000/api/match HTTP/1.1
 ###
 # Find Match By Id
 Get http://localhost:3000/api/match/5cbd2baff4ee6b3d241ca5a7 HTTP/1.1
+
+
+
+###
+# add Substitution
+PATCH http://localhost:3000/api/match/5cbd2baff4ee6b3d241ca5a7/substitute HTTP/1.1
+Content-Type: application/json; charset=utf-8
+
+{
+    "side":"AWAY",
+    "minute": 223,
+    "playerIn": "P123",
+    "playerOut": "P223"
+}
+
+
+###
+# add Events
+PATCH http://localhost:3000/api/match/5cbd2baff4ee6b3d241ca5a7/event HTTP/1.1
+Content-Type: application/json; charset=utf-8
+
+{
+        "minute": 23,
+        "player": "P1",
+         "event": "RED",
+         "homeScore": 1,
+         "awayScore": 2
+}
+
+
+
+
+###
+# add Commentary
+PATCH http://localhost:3000/api/match/5cbd2baff4ee6b3d241ca5a7/commentary HTTP/1.1
+Content-Type: application/json; charset=utf-8
+
+{
+        "minute": 232,
+        "message":"this is commentary12"
+}
+
+###
+# add Statistics
+PATCH http://localhost:3000/api/match/5cbd2baff4ee6b3d241ca5a7/statistic  HTTP/1.1
+Content-Type: application/json; charset=utf-8
+
+{
+    "shotsOnTargetHome":1,
+           "shotsOnTargetAway":1,
+          "shotsOffTargetHome":2,
+           "shotsOffTargetAway":2,
+     "possessionHome":2,
+        "possessionAway":2,
+        "cornersHome":2,
+          "cornersAway":2,
+      "offsidesHome":2,
+        "offsidesAway":2,
+        "foulsHome":2,
+        "foulsAway":2,
+        "goalKicksHome":2,
+        "goalKicksAway":2
+}
+
+###
+# add Statistics
+PATCH http://localhost:3000/api/match/5cbd2baff4ee6b3d241ca5a7/status  HTTP/1.1
+Content-Type: application/json; charset=utf-8
+
+{
+   "status":"HT"
+}

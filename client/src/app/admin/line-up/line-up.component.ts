@@ -10,7 +10,7 @@ import { MatchUpdateService } from '../match-update.service';
 export class LineUpComponent implements OnInit {
   myForm: FormGroup;
 
-  sides: string[] = ['Home', 'AWAY'];
+  sides: string[] = ['HOME', 'AWAY'];
 
   minute: Number;
   time1 = new Date(2019, 4, 21, 4, 10, 0, 0);
