@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {DataSource} from '@angular/cdk/collections';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {MatchService} from '../../match.service';
+import {MatchService} from '../../service/match.service';
+import { MatchDetailService } from '../../service/match-detail.service';
 
 
 
@@ -14,7 +15,7 @@ export class ListMatchesComponent implements OnInit {
    displayedColumns: string[] = ['st','leagueName','homeTeam', 'awayTeam' ];
    dataSource:any;
 
-  constructor(private matchService:MatchService) { 
+  constructor(private matchService:MatchService,private matchDetailService:MatchDetailService ) { 
     this.matchService.findAll().subscribe(
       data=>{
       console.log(data);
@@ -25,8 +26,12 @@ export class ListMatchesComponent implements OnInit {
   getRecord(element:any){
     console.log("here your request BOOSSS");
     console.log(element._id);
+    this.matchDetailService.emitValue(element._id);
   }
-
+//delete 
+  //  onSend(value: string) {
+//     this.dataService.emitValue(value);
+// }
   ngOnInit() {
     
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatchDetailService } from 'src/app/service/match-detail.service';
 
 @Component({
   selector: 'app-match-details',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MatchDetailsComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private matchDetailService:MatchDetailService) { }
+  matchId:String;
   ngOnInit() {
+    this.matchDetailService.emitter.subscribe(
+      data => {this.matchId = data;
+          console.log("MatchDetailsComponent");
+          console.log(this.matchId);
+          //this.onGet();
+      }
+  );
   }
 
 }
