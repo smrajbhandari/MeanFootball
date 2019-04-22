@@ -6,13 +6,14 @@ import { EventsComponent } from '../events/events.component';
 import { LineUpComponent } from '../line-up/line-up.component';
 import { StatisticsComponent } from '../statistics/statistics.component';
 import { CommentaryComponent } from '../commentary/commentary.component';
+import { MainComponent } from 'src/app/main/main.component';
 // import { AdminComponent } from '../admin.component';
 
 const routes: Routes = [
-  // {
-    // path: 'admin',
-    // component: AdminComponent,
-    // children: [
+  {
+    path: 'main',
+    component: MainComponent,
+    children: [
       {
         path: 'events',
         component: EventsComponent,
@@ -28,8 +29,8 @@ const routes: Routes = [
       {
         path: 'commentary',
         component: CommentaryComponent,
-    //   }
-    // ]
+      }
+    ]
   },
   {
     path:'create',
