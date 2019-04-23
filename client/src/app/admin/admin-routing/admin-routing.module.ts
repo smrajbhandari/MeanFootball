@@ -8,6 +8,8 @@ import { StatisticsComponent } from '../statistics/statistics.component';
 import { CommentaryComponent } from '../commentary/commentary.component';
 import { TeamComponent } from '../team/team.component';
 import { MainComponent } from 'src/app/main/main.component';
+import { AdminGuardGuard } from 'src/app/admin-guard.guard';
+// import { AdminComponent } from '../admin.component';
 
 const routes: Routes = [
   {
@@ -17,26 +19,35 @@ const routes: Routes = [
       {
         path: 'events',
         component: EventsComponent,
+        canActivate: [AdminGuardGuard]
       },
       {
         path: 'lineUp',
         component: LineUpComponent,
+        canActivate: [AdminGuardGuard]
       },
       {
         path: 'statistics',
         component: StatisticsComponent,
+        canActivate: [AdminGuardGuard]
       },
       {
         path: 'commentary',
         component: CommentaryComponent,
+        canActivate: [AdminGuardGuard]
       }
     ]
   },
   {
     path:'create',
-    component:CreateMatchComponent
+    component:CreateMatchComponent,
+    canActivate: [AdminGuardGuard]
   },
-  { path: 'teams', component: TeamComponent }
+  { 
+    path: 'teams', 
+    component: TeamComponent,
+    canActivate: [AdminGuardGuard]
+  }
 
 ];
 

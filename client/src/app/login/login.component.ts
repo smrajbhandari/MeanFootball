@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private userService: UserService,
     private snackBar: MatSnackBar,
-    private router: Router
+    private router: Router,
   ) {
     this.myForm =  formBuilder.group({
       'email': ['', [Validators.required, Validators.email]],
@@ -38,11 +38,14 @@ export class LoginComponent implements OnInit {
     }
 
     return this.userService.login(this.myForm.value)
-      .subscribe(data => {
+      .subscribe((data:any) => {
         if (data) {
-          localStorage.setItem('_token',data.toString());
+          this.userService.setUser(data.user);
+          localStorage.setItem('_token',data.token.toString());
           this.router.navigateByUrl('/main');
+
         }
+
       }, err => {
         this.snackBar.open(err.error.message, 'Close', { duration: 3000 });
       });

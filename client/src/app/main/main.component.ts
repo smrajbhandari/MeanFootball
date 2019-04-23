@@ -6,8 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+  show: boolean;
 
-  constructor() { }
+  constructor() { 
+    let value=localStorage.getItem("isAdmin");
+    if (value==="true") {
+      this.show=true;
+    }
+    else{
+      this.show=false;
+    }
+  }
 
   ngOnInit() {
   }

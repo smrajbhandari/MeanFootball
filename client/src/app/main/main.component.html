@@ -17,7 +17,7 @@
         </mat-menu> -->
       <mat-grid-list  cols="1" >
         <mat-grid-tile><app-match-details></app-match-details></mat-grid-tile>
-        <mat-grid-tile><app-admin></app-admin></mat-grid-tile>
+        <mat-grid-tile *ngIf="show"><app-admin></app-admin></mat-grid-tile>
       </mat-grid-list></mat-sidenav-content>
   </mat-sidenav-container>
 </div>
@@ -35,4 +35,3 @@
     <mat-sidenav-content><app-admin></app-admin></mat-sidenav-content>
     
   </mat-sidenav-container> -->
-<!-- <mat-grid-tile><app-create-match></app-create-match></mat-grid-tile> -->

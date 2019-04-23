@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatchDetailService } from 'src/app/service/match-detail.service';
 import { MatchService } from 'src/app/service/match.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-statistics',
@@ -11,7 +12,9 @@ import { MatchService } from 'src/app/service/match.service';
 export class StatisticsComponent implements OnInit {
   myForm: FormGroup;
   private matchObj: any;
-  constructor(private formBuilder: FormBuilder,private matchDetailService: MatchDetailService,private matchService:MatchService) {
+  constructor(private formBuilder: FormBuilder,private matchDetailService: MatchDetailService,
+    private snackBar: MatSnackBar,
+    private matchService:MatchService) {
     this.myForm = formBuilder.group({
       'shotsOnTargetHome': ['', Validators.required],
       'shotsOnTargetAway': ['', Validators.required],
@@ -50,6 +53,8 @@ export class StatisticsComponent implements OnInit {
     this.matchService.addStatistics(this.matchObj._id,statistics)
       .subscribe(data => {
         this.myForm.reset();
+        this.snackBar.open("Data Saved !!!", 'Close', { duration: 3000 });
+
       }, error => {
         console.log(error);
       });

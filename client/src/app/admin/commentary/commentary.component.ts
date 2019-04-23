@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, SelectMultipleControlValueAccessor } from '@angular/forms';
 import { MatchDetailService } from 'src/app/service/match-detail.service';
 import { MatchService } from 'src/app/service/match.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-commentary',
@@ -12,7 +13,10 @@ export class CommentaryComponent implements OnInit {
   myForm: FormGroup;
   minute:Number;
   private matchObj: any;
-  constructor(private formBuilder: FormBuilder,private matchDetailService: MatchDetailService,private matchService:MatchService) {
+  constructor(private formBuilder: FormBuilder,private matchDetailService: MatchDetailService,
+    private matchService:MatchService,  
+      private snackBar: MatSnackBar,
+    ) {
     
     this.myForm=formBuilder.group({
       'message': ['', Validators.required]
@@ -45,7 +49,8 @@ export class CommentaryComponent implements OnInit {
     this.matchService.addCommentary(this.matchObj._id,commentary)
       .subscribe(data => {
        this.myForm.reset();
-       this.myForm.markAsUntouched;
+       this.snackBar.open("Data Saved !!!", 'Close', { duration: 3000 });
+
       }, error => {
         console.log(error);
       });
