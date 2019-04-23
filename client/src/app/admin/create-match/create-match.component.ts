@@ -6,6 +6,7 @@ import { Team } from 'src/app/models/team';
 import { TeamService } from 'src/app/services/team.service';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-create-match',
@@ -21,12 +22,14 @@ export class CreateMatchComponent implements OnInit {
     private formBuilder: FormBuilder,
     private matchService: MatchService,
     private teamService: TeamService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) { }
 
   ngOnInit() {
     this.myForm = this.formBuilder.group({
       'leagueName': ['', Validators.required],
+      'startDateTime': ['', Validators.required],
       'homeTeamId': ['', Validators.required],
       'awayTeamId': ['', Validators.required]
     });
@@ -56,6 +59,7 @@ export class CreateMatchComponent implements OnInit {
     this.matchService.create(match)
       .subscribe(data => {
         this.router.navigateByUrl('main');
+        this.snackBar.open('Match created successfully', 'Close', { duration: 3000 });
       }, err => {
         console.log(err);
       });
