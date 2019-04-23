@@ -15,8 +15,9 @@
   <mat-sidenav mode="side" opened><app-list-matches></app-list-matches></mat-sidenav>
   <mat-sidenav-content><mat-grid-list  cols="1" >
       <mat-grid-tile><app-match-details></app-match-details></mat-grid-tile>
-      <mat-grid-tile><app-admin></app-admin></mat-grid-tile>
-      <mat-grid-tile><app-create-match></app-create-match></mat-grid-tile>
+      <mat-grid-tile *ngIf="show"><app-admin></app-admin></mat-grid-tile>
+      <mat-grid-tile *ngIf="show"><app-create-match></app-create-match></mat-grid-tile>
+
     </mat-grid-list></mat-sidenav-content>
   
 </mat-sidenav-container>

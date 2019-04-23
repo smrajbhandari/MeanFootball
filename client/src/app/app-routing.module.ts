@@ -8,10 +8,10 @@ import { AdminComponent } from './admin/admin.component';
 import { MainComponent } from './main/main.component';
 
 const routes: Routes = [
-  { path: 'main', component:MainComponent },
+  { path: 'main', component:MainComponent , canActivate: [AuthGuardService]},
   { path: 'signup', component: SignupComponent},   //     canActivate: [AuthGuardService] 
   { path: 'login', component: LoginComponent},
-  { path: 'admin', component: AdminComponent}
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

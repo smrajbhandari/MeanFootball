@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MatchDetailService } from 'src/app/service/match-detail.service';
 import { MatchService } from 'src/app/service/match.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-line-up',
@@ -15,7 +16,9 @@ export class LineUpComponent implements OnInit {
   private matchObj: any;
 
   minute: Number;
-  constructor(private formBuilder: FormBuilder, private matchDetailService: MatchDetailService,private matchService:MatchService) {
+  constructor(private formBuilder: FormBuilder, private matchDetailService: MatchDetailService,
+    private snackBar: MatSnackBar,
+    private matchService:MatchService) {
     this.myForm = formBuilder.group({
       'side': ['', Validators.required],
       'playerIn': ['', Validators.required],
@@ -50,6 +53,8 @@ export class LineUpComponent implements OnInit {
     this.matchService.addSubstitute(this.matchObj._id,substitute)
       .subscribe(data => {
        this.myForm.reset();
+       this.snackBar.open("Data Saved !!!", 'Close', { duration: 3000 });
+
       }, error => {
         console.log(error);
       });
