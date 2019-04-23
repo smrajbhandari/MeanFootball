@@ -10,7 +10,9 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
 })
 
 export class MatchDetailsComponent implements OnInit {
-    constructor(private matchDetailService:MatchDetailService) { }
+    constructor(private matchDetailService:MatchDetailService) { 
+        
+    }
     displayedColumns: string[] = ['minute', 'player', 'event', 'score'];
     dataSourceEvents = new MatTableDataSource<eventSTR>([]);
 
@@ -104,19 +106,12 @@ export class MatchDetailsComponent implements OnInit {
     }
 };
   ngOnInit() {
-    //this.dataSourceEvents.paginator = this.paginator;
-
     this.matchDetailService.emitter.subscribe(
       data => {
           this.matchId = data._id;
           this.match=data;
-        //   console.log(data);
-          //   this.dataSourceEvents=data.events;
           this.dataSourceEvents=new MatTableDataSource<eventSTR>(data.events);
-          this.dataSourceEvents.paginator = this.paginator;
-        //   this.message2=new MatTableDataSource<[{minute: Number,message: String}]>(data.commentaries);
-         // this.message2=data.commentaries;
-         // console.log(this.message2);
+          setTimeout(() => this.dataSourceEvents.paginator = this.paginator,0);
       }
   );
   //this.dataSourceEvents.paginator = this.paginator;

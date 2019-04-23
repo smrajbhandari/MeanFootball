@@ -18,12 +18,13 @@ export class TrackerComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
-    this.dataSourceCommentaries.paginator = this.paginator;
+    // this.dataSourceCommentaries.paginator = this.paginator;
     this.matchDetailService.emitter.subscribe(
       data => {
           //this.message2=data.commentaries;
           this.dataSourceCommentaries = new MatTableDataSource<[]>(data.commentaries);
-          this.dataSourceCommentaries.paginator = this.paginator;
+          // this.dataSourceCommentaries.paginator = this.paginator;
+          setTimeout(() => this.dataSourceCommentaries.paginator = this.paginator,0);
           //console.log(this.message2);
       });
   }
