@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { LogoutComponent } from '../logout/logout.component';
 
 @Component({
   selector: 'app-main',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
   show: boolean;
 
-  constructor() { 
+  constructor(public dialog: MatDialog) { 
     let value=localStorage.getItem("isAdmin");
     if (value==="true") {
       this.show=true;
@@ -16,6 +18,13 @@ export class MainComponent implements OnInit {
     else{
       this.show=false;
     }
+  }
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(LogoutComponent, {
+      width: '350px',
+    });
   }
 
   ngOnInit() {

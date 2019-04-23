@@ -5,10 +5,9 @@
     <mat-sidenav mode="side" opened><app-list-matches></app-list-matches></mat-sidenav>
     <mat-sidenav-content>
         <mat-toolbar>
-          <span>   - -     </span>
-            <button mat-button [routerLink]="['/teams']">Teams</button>
-            <button mat-button [routerLink]="['/create']">Create Match</button>
-            <button mat-button>Logout</button>
+            <button *ngIf="show" mat-button [routerLink]="['/teams']">Teams</button>
+            <button *ngIf="show" mat-button [routerLink]="['/create']">Create Match</button>
+            <button mat-raised-button (click)="openDialog()">Logout</button>
           </mat-toolbar>
       <mat-grid-list  cols="1" >
         <mat-grid-tile><app-match-details></app-match-details></mat-grid-tile>
