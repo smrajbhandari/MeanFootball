@@ -14,7 +14,7 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(): boolean {
     const token = localStorage.getItem('_token');
-    if (!token) {
+    if (!(helper.decodeToken(token) && helper.decodeToken(token).email)) {
       this.router.navigate(['login']);
       this.snackBar.open('Please login to continue!', 'Close', { duration: 3000 });
 

@@ -38,7 +38,7 @@ exports.login = (req, res) => {
             }
 
             const token = jwt.sign(
-                { email: "email", isAdmin: true },
+                { email: user.email, isAdmin: user.isAdmin },
                 process.env.PRIVATE_KEY,
                 { expiresIn: "2h" }
             );

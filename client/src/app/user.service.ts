@@ -30,7 +30,6 @@ export class UserService {
 
   setUser(user) {
     this.userObj = user;
-    localStorage.setItem("isAdmin",this.userObj.isAdmin);
   }
 
  
