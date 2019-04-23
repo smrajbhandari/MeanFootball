@@ -9,7 +9,7 @@ import { MatchDetailService } from 'src/app/service/match-detail.service';
 export class StatisticsComponent implements OnInit {
 
   constructor(private matchDetailService:MatchDetailService) { }
-  dataStatistic:{
+  public dataStatistic:{
     shotsOnTarget: {
         homeTeam: Number,
         awayTeam: Number
@@ -43,7 +43,45 @@ export class StatisticsComponent implements OnInit {
   ngOnInit() {
     this.matchDetailService.emitter.subscribe(
       data => {
-          this.dataStatistic =data.statistic;
+        console.log(data.statistic);
+        if(data.statistic ==null)
+        {
+          console.log('is null');
+          this.dataStatistic ={
+            shotsOnTarget: {
+                homeTeam: 0,
+                awayTeam: 0
+            },
+            shotsOffTarget: {
+                homeTeam: 0,
+                awayTeam: 0
+            },
+            possession: {
+                homeTeam: 0,
+                awayTeam: 0
+            },
+            corners: {
+                homeTeam: 0,
+                awayTeam: 0
+            },
+            offsides: {
+                homeTeam: 0,
+                awayTeam: 0
+            },
+            fouls: {
+                homeTeam: 0,
+                awayTeam: 0
+            },
+            goalKicks: {
+                homeTeam: 0,
+                awayTeam: 0
+            }
+        }
+        }
+        else{
+          console.log(data.statistic.length-1);
+          this.dataStatistic =data.statistic[data.statistic.length-1];
+        }
           //this.dataStatistic.corners
       });
   }

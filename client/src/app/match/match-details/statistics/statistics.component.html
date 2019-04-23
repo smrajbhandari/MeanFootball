@@ -1,7 +1,4 @@
-<p>
-  statistics works!
-</p>
-<table>
+<table *ngIf="dataStatistic != null" >
   <tr>
     <th>Home Team</th><th>Away Team</th>
   </tr>
@@ -9,49 +6,57 @@
     <td colspan="2" >Shot on target</td>
   </tr>
   <tr>
-    <td class="home">3</td>
-    <td class="away">4</td>
+      <td class="home">{{dataStatistic.shotsOnTarget.homeTeam}}</td>
+      <td class="away">{{dataStatistic.shotsOnTarget.awayTeam}}</td>
   </tr>
   <tr>
     <td colspan="2" >Shot off target</td>
   </tr>
   <tr>
-      <td class="home">3</td>
-      <td class="away">4</td>
+      <td class="home">{{dataStatistic.shotsOffTarget.homeTeam}}</td>
+      <td class="away">{{dataStatistic.shotsOffTarget.awayTeam}}</td>
   </tr>
   <tr>
       <td colspan="2" >possession (%)</td>
     </tr>
     <tr>
-        <td class="home">3</td>
-        <td class="away">4</td>
+        <td class="home">{{dataStatistic.possession.homeTeam}}</td>
+        <td class="away">{{dataStatistic.possession.awayTeam}}</td>
     </tr>
     <tr>
         <td colspan="2" >corners</td>
       </tr>
       <tr>
           <td class="home">{{dataStatistic.corners.homeTeam}}</td>
-          <td class="away">4</td>
+          <td class="away">{{dataStatistic.corners.awayTeam}}</td>
       </tr>
       <tr>
           <td colspan="2" >offsides</td>
         </tr>
         <tr>
-            <td class="home">3</td>
-            <td class="away">4</td>
-        </tr>
+            <td class="home">{{dataStatistic.offsides.homeTeam}}</td>
+            <td class="away">{{dataStatistic.offsides.awayTeam}}</td>
+          </tr>
         <tr>
             <td colspan="2" >fouls</td>
           </tr>
           <tr>
-              <td class="home">3</td>
-              <td class="away">4</td>
+              <td class="home">{{dataStatistic.fouls.homeTeam}}</td>
+              <td class="away">{{dataStatistic.fouls.awayTeam}}</td>
         </tr>  
         <tr>
             <td colspan="2" >goal kicks</td>
           </tr>
           <tr>
-              <td class="home">3</td>
-              <td class="away">4</td>
+              <td class="home">{{dataStatistic.goalKicks.homeTeam}}</td>
+              <td class="away">{{dataStatistic.goalKicks.awayTeam}}</td>
           </tr>                    
+</table>
+<table *ngIf="dataStatistic == null" >
+    <tr>
+      <th>Home Team</th><th>Away Team</th>
+    </tr>
+    <tr>
+      <td colspan="2" >There is not information for now!!</td>
+    </tr>
 </table>
