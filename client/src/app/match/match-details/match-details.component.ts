@@ -1,16 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { MatchDetailService } from 'src/app/service/match-detail.service';
+import {MatPaginator, MatTableDataSource} from '@angular/material';
 
 @Component({
   selector: 'app-match-details',
   templateUrl: './match-details.component.html',
   styleUrls: ['./match-details.component.scss']
 })
-export class MatchDetailsComponent implements OnInit {
 
-  constructor(private matchDetailService:MatchDetailService) { }
-  matchId:String;
-  match:{
+export class MatchDetailsComponent implements OnInit {
+    constructor(private matchDetailService:MatchDetailService) { }
+    displayedColumns: string[] = ['minute', 'player', 'event', 'score'];
+    dataSourceEvents = new MatTableDataSource<eventSTR>([]);
+
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+
+    matchId:String;
+    match:{
     leagueName: String,
     startDateTime: Date,
     homeTeam: {
@@ -101,10 +107,19 @@ export class MatchDetailsComponent implements OnInit {
       data => {
           this.matchId = data._id;
           this.match=data;
-         
+        //   this.dataSourceEvents=data.events;
+          this.dataSourceEvents=new MatTableDataSource<eventSTR>(data.events);
+          this.dataSourceEvents.paginator = this.paginator;
       }
   );
+  this.dataSourceEvents.paginator = this.paginator;
   }
-  
-
 }
+
+export interface eventSTR {
+    minute: Number,
+        player: String,
+        event: String,  // Red, Yellow, Goal
+        homeScore: Number,
+        awayScore: Number
+  }
