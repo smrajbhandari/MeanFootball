@@ -1,5 +1,12 @@
 <mat-toolbar color="primary">
-  Teams
+  <mat-toolbar-row>
+    <span>Teams</span>
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button [routerLink]="['/main']">
+      <mat-icon aria-label="Home">home</mat-icon>
+    </button>
+  </mat-toolbar-row>
 </mat-toolbar>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
