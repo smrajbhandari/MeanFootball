@@ -23,9 +23,9 @@
         </table>
         <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </mat-tab>
-  <mat-tab label="Tracker"><app-tracker message2="{{message2}}" [message3]="message3" ></app-tracker> </mat-tab>
-  <mat-tab label="Statistics"> Content 1 </mat-tab>
-  <mat-tab label="Commentaries"> Content 1 </mat-tab>
+  <mat-tab label="Tracker"><app-tracker></app-tracker> </mat-tab>
+  <mat-tab label="Statistics"><app-statistics></app-statistics></mat-tab>
+  <mat-tab label="line-up"><app-line-up></app-line-up> </mat-tab>
 </mat-tab-group >
 <p>Details match between {{match.homeTeam.name}} and {{match.awayTeam.name}} </p>
 </div>

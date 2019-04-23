@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { MatTableDataSource } from '@angular/material';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { MatchDetailService } from 'src/app/service/match-detail.service';
 
 @Component({
@@ -7,34 +7,25 @@ import { MatchDetailService } from 'src/app/service/match-detail.service';
   templateUrl: './tracker.component.html',
   styleUrls: ['./tracker.component.scss']
 })
-export class TrackerComponent implements OnInit {
-  public message1;
-  @Input() message2;
-  @Input() message3;
-  constructor(private matchDetailService:MatchDetailService) { }
-  displayedColumns: string[] = ['minute', 'message'];
-  dataSourceCommentaries = new MatTableDataSource<[{minute: Number,message: String}]>([]);
 
+export class TrackerComponent implements OnInit {
+  constructor(private matchDetailService:MatchDetailService) {
+    this.dataSourceCommentaries.paginator = this.paginator;
+
+   }
+  displayedColumns: string[] = ['minute', 'message'];
+  dataSourceCommentaries = new MatTableDataSource<[]>([]);
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   ngOnInit() {
-    console.log("adsf");
-    console.log(JSON.stringify(this.message2));
-
+    this.dataSourceCommentaries.paginator = this.paginator;
     this.matchDetailService.emitter.subscribe(
       data => {
-          // this.matchId = data._id;
-          // this.match=data;
-        //   console.log(data);
-          //   this.dataSourceEvents=data.events;
-          // this.dataSourceEvents=new MatTableDataSource<eventSTR>(data.events);
-          // this.dataSourceEvents.paginator = this.paginator;
-        //   this.message2=new MatTableDataSource<[{minute: Number,message: String}]>(data.commentaries);
-          this.message2=data.commentaries;
-          console.log(this.message2);
+          //this.message2=data.commentaries;
+          this.dataSourceCommentaries = new MatTableDataSource<[]>(data.commentaries);
+          this.dataSourceCommentaries.paginator = this.paginator;
+          //console.log(this.message2);
       });
-
-    // this.dataSourceCommentaries=new MatTableDataSource<[{minute: Number,message: String}]>(this.message2);
-    //this.dataSourceEvents.paginator = this.paginator;
   }
 
 }
