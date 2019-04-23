@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       .subscribe(data => {
         if (data) {
           localStorage.setItem('_token',data.toString());
-          this.router.navigateByUrl('');
+          this.router.navigateByUrl('/main');
         }
       }, err => {
         this.snackBar.open(err.error.message, 'Close', { duration: 3000 });
