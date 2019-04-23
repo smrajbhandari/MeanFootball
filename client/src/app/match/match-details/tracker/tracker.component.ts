@@ -11,7 +11,6 @@ import { MatchDetailService } from 'src/app/service/match-detail.service';
 export class TrackerComponent implements OnInit {
   constructor(private matchDetailService:MatchDetailService) {
     this.dataSourceCommentaries.paginator = this.paginator;
-
    }
   displayedColumns: string[] = ['minute', 'message'];
   dataSourceCommentaries = new MatTableDataSource<[]>([]);
@@ -21,11 +20,8 @@ export class TrackerComponent implements OnInit {
     // this.dataSourceCommentaries.paginator = this.paginator;
     this.matchDetailService.emitter.subscribe(
       data => {
-          //this.message2=data.commentaries;
           this.dataSourceCommentaries = new MatTableDataSource<[]>(data.commentaries);
-          // this.dataSourceCommentaries.paginator = this.paginator;
           setTimeout(() => this.dataSourceCommentaries.paginator = this.paginator,0);
-          //console.log(this.message2);
       });
   }
 
