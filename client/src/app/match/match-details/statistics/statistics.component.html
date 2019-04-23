@@ -8,12 +8,12 @@
   <tr>
       <td class="home">
         {{dataStatistic.shotsOnTarget.homeTeam}}
-        <mat-slider invert tickInterval="3" min="1" 
+        <mat-slider invert tickInterval="3" min="0" 
         max={{dataStatistic.shotsOnTarget.homeTeam+dataStatistic.shotsOnTarget.awayTeam}} 
         step="0.5" value={{dataStatistic.shotsOnTarget.homeTeam}}></mat-slider>
       </td>
       <td class="away">
-          <mat-slider min="1" step="0" 
+          <mat-slider min="0" step="0" 
           max={{dataStatistic.shotsOnTarget.awayTeam+dataStatistic.shotsOnTarget.homeTeam}}  
           value={{dataStatistic.shotsOnTarget.awayTeam}}></mat-slider>
           {{dataStatistic.shotsOnTarget.awayTeam}}
@@ -24,12 +24,12 @@
   </tr>
   <tr>
       <td class="home">{{dataStatistic.shotsOffTarget.homeTeam}}
-          <mat-slider invert tickInterval="3" min="1" 
+          <mat-slider invert tickInterval="3" min="0" 
           max={{dataStatistic.shotsOffTarget.homeTeam+dataStatistic.shotsOffTarget.awayTeam}} 
           step="0.5" value={{dataStatistic.shotsOffTarget.homeTeam}}></mat-slider>
       </td>
       <td class="away">
-          <mat-slider min="1" step="0" 
+          <mat-slider min="0" step="0" 
           max={{dataStatistic.shotsOffTarget.awayTeam+dataStatistic.shotsOffTarget.homeTeam}}  
           value={{dataStatistic.shotsOffTarget.awayTeam}}></mat-slider>
           {{dataStatistic.shotsOffTarget.awayTeam}}
@@ -40,12 +40,12 @@
     </tr>
     <tr>
         <td class="home">{{dataStatistic.possession.homeTeam}}
-            <mat-slider invert tickInterval="3" min="1" 
+            <mat-slider invert tickInterval="3" min="0" 
             max={{dataStatistic.possession.homeTeam+dataStatistic.possession.awayTeam}} 
             step="0.5" value={{dataStatistic.possession.homeTeam}}></mat-slider>
         </td>
         <td class="away">
-            <mat-slider min="1" step="0" 
+            <mat-slider min="0" step="0" 
             max={{dataStatistic.possession.awayTeam+dataStatistic.possession.homeTeam}}  
             value={{dataStatistic.possession.awayTeam}}></mat-slider>
             {{dataStatistic.possession.awayTeam}}
@@ -56,12 +56,12 @@
       </tr>
       <tr>
           <td class="home">{{dataStatistic.corners.homeTeam}}
-              <mat-slider invert tickInterval="3" min="1" 
+              <mat-slider invert tickInterval="3" min="0" 
               max={{dataStatistic.corners.homeTeam+dataStatistic.corners.awayTeam}} 
               step="0.5" value={{dataStatistic.corners.homeTeam}}></mat-slider>
           </td>
           <td class="away">
-              <mat-slider min="1" step="0" 
+              <mat-slider min="0" step="0" 
               max={{dataStatistic.corners.awayTeam+dataStatistic.corners.homeTeam}}  
               value={{dataStatistic.corners.awayTeam}}></mat-slider>
               {{dataStatistic.corners.awayTeam}}
@@ -72,12 +72,12 @@
         </tr>
         <tr>
             <td class="home">{{dataStatistic.offsides.homeTeam}}
-                <mat-slider invert tickInterval="3" min="1" 
+                <mat-slider invert tickInterval="3" min="0" 
                 max={{dataStatistic.offsides.homeTeam+dataStatistic.offsides.awayTeam}} 
                 step="0.5" value={{dataStatistic.offsides.homeTeam}}></mat-slider>
             </td>
             <td class="away">
-                <mat-slider min="1" step="0" 
+                <mat-slider min="0" step="0" 
                 max={{dataStatistic.offsides.awayTeam+dataStatistic.offsides.homeTeam}}  
                 value={{dataStatistic.offsides.awayTeam}}></mat-slider>
                 {{dataStatistic.offsides.awayTeam}}
@@ -88,12 +88,12 @@
           </tr>
           <tr>
               <td class="home">{{dataStatistic.fouls.homeTeam}}
-                  <mat-slider invert tickInterval="3" min="1" 
+                  <mat-slider invert tickInterval="3" min="0" 
                   max={{dataStatistic.fouls.homeTeam+dataStatistic.fouls.awayTeam}} 
                   step="0.5" value={{dataStatistic.fouls.homeTeam}}></mat-slider>
               </td>
               <td class="away">
-                  <mat-slider min="1" step="0" 
+                  <mat-slider min="0" step="0" 
                   max={{dataStatistic.fouls.awayTeam+dataStatistic.fouls.homeTeam}}  
                   value={{dataStatistic.fouls.awayTeam}}></mat-slider>
                   {{dataStatistic.fouls.awayTeam}}
@@ -104,12 +104,12 @@
           </tr>
           <tr>
               <td class="home">{{dataStatistic.goalKicks.homeTeam}}
-                  <mat-slider invert tickInterval="3" min="1" 
+                  <mat-slider invert tickInterval="3" min="0" 
                   max={{dataStatistic.goalKicks.homeTeam+dataStatistic.goalKicks.awayTeam}} 
                   step="0.5" value={{dataStatistic.goalKicks.homeTeam}}></mat-slider>
               </td>
               <td class="away">
-                  <mat-slider min="1" step="0" 
+                  <mat-slider min="0" step="0" 
                   max={{dataStatistic.goalKicks.awayTeam+dataStatistic.goalKicks.homeTeam}}  
                   value={{dataStatistic.goalKicks.awayTeam}}></mat-slider>
                   {{dataStatistic.goalKicks.awayTeam}}
