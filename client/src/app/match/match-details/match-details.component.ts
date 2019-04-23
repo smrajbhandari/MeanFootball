@@ -103,6 +103,7 @@ export class MatchDetailsComponent implements OnInit {
           this.match=data;
           console.log("MatchDetailsComponent Receive the _id="+this.matchId);
           console.log("this the match="+ this.match.homeTeam.name );
+          console.log(this.match);
       }
   );
   }
