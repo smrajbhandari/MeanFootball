@@ -2,8 +2,8 @@ import { Team } from './team';
 
 export class Match {
     _id: String;
-    leagueName: string;
-    startDateTime: string;
+    leagueName: String;
+    startDateTime: Date;
     homeTeam: Team;
     awayTeam: Team;
 }

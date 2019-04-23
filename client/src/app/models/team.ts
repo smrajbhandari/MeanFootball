@@ -1,7 +1,7 @@
 export class Team {
   _id: String;
-  name: string;
-  coach: string;
+  name: String;
+  coach: String;
   players: [{
     name: String;
     position: String;
