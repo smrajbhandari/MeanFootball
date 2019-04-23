@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Team } from 'src/app/models/team';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import { TeamService } from 'src/app/services/team.service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -26,11 +26,40 @@ export class EditDialogComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.formBuilder.group({
       'name': ['', Validators.required],
-      'coach': ['', Validators.required]
+      'coach': ['', Validators.required],
+      'players': this.formBuilder.array([
+      ])
     });
 
     this.team = this.teamService.findOne(this.data._id)
-      .pipe(tap(team => this.myForm.patchValue(team)));
+      .pipe(tap(team => {
+        console.log(team);
+        
+        team.players.forEach(player => {
+          this.addPlayer();
+        });
+        this.myForm.patchValue(team);
+      }));
+
+  }
+
+  buildPlayerFields() {
+    return this.formBuilder.group({
+      'name': ['', Validators.required],
+      'position': ['', Validators.required],
+      'number': ['', Validators.required],
+      'substitute': [false, Validators.required]
+    });
+  }
+
+  addPlayer() {
+    const control = <FormArray>this.myForm.controls['players'];
+    control.push(this.buildPlayerFields());
+  }
+
+  removePlayer(index: number) {
+    const players = <FormArray>this.myForm.controls['players'];
+    players.removeAt(index);
   }
 
   get f() { return this.myForm.controls; }

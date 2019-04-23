@@ -3,7 +3,8 @@ const Team = require('../models/team.model.js');
 exports.create = (req, res) => {
     const team = new Team({
         name: req.body.name,
-        coach: req.body.coach
+        coach: req.body.coach,
+        players: req.body.players
     });
 
     team.save()
@@ -45,7 +46,8 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
     Team.findByIdAndUpdate(req.params.teamId, {
         name: req.body.name,
-        coach: req.body.coach
+        coach: req.body.coach,
+        players: req.body.players
     })
     .then(team => {
         if (!team) {
