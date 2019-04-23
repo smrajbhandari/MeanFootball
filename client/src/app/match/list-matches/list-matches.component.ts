@@ -18,7 +18,7 @@ export class ListMatchesComponent implements OnInit {
   constructor(private matchService:MatchService,private matchDetailService:MatchDetailService ) { 
     this.matchService.findAll().subscribe(
       data=>{
-      //console.log(data);
+      console.log(data);
       //here is the data that i receive
       this.dataSource = data;
       }) ;

@@ -1,6 +1,7 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { MatchDetailService } from 'src/app/service/match-detail.service';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
+import {TrackerComponent} from './tracker/tracker.component'
 
 @Component({
   selector: 'app-match-details',
@@ -12,6 +13,8 @@ export class MatchDetailsComponent implements OnInit {
     constructor(private matchDetailService:MatchDetailService) { }
     displayedColumns: string[] = ['minute', 'player', 'event', 'score'];
     dataSourceEvents = new MatTableDataSource<eventSTR>([]);
+    message2=new MatTableDataSource<[{minute: Number,message: String}]>([]);
+    message3="message3asdf";
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -107,9 +110,13 @@ export class MatchDetailsComponent implements OnInit {
       data => {
           this.matchId = data._id;
           this.match=data;
-        //   this.dataSourceEvents=data.events;
+        //   console.log(data);
+          //   this.dataSourceEvents=data.events;
           this.dataSourceEvents=new MatTableDataSource<eventSTR>(data.events);
           this.dataSourceEvents.paginator = this.paginator;
+        //   this.message2=new MatTableDataSource<[{minute: Number,message: String}]>(data.commentaries);
+          this.message2=data.commentaries;
+          console.log(this.message2);
       }
   );
   this.dataSourceEvents.paginator = this.paginator;
