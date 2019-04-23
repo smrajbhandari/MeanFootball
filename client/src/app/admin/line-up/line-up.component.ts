@@ -12,8 +12,7 @@ export class LineUpComponent implements OnInit {
   myForm: FormGroup;
 
   sides: string[] = ['HOME', 'AWAY'];
-  private matchId:string;
-  private matchObj: Object = {};
+  private matchObj: any;
 
   minute: Number;
   constructor(private formBuilder: FormBuilder, private matchDetailService: MatchDetailService,private matchService:MatchService) {
@@ -23,14 +22,21 @@ export class LineUpComponent implements OnInit {
       'playerOut': ['', Validators.required]
 
     });
+
+    this.matchObj=this.matchDetailService.getCurrentMatchObj();
+
   }
 
   ngOnInit() {
     this.matchDetailService.emitter.subscribe(
       data => {
         this.matchObj = data;
-        this.matchId=data._id;
         this.minute = Math.floor(Math.abs(((new Date(data.startDateTime).getTime()) - (new Date()).getTime()) / 60000));
+           }
+    );
+    this.matchDetailService.minuteEmitter.subscribe(
+      data => {
+        this.minute = data;
       }
     );
   }
@@ -41,10 +47,9 @@ export class LineUpComponent implements OnInit {
     }
     const substitute = this.myForm.value;
     substitute.minute = this.minute;
-    this.matchService.addSubstitute(this.matchId,substitute)
+    this.matchService.addSubstitute(this.matchObj._id,substitute)
       .subscribe(data => {
-       // this.router.navigateByUrl('login');
-       console.log("saved");
+       this.myForm.reset();
       }, error => {
         console.log(error);
       });

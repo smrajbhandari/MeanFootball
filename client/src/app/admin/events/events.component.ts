@@ -11,8 +11,7 @@ import { MatchService } from 'src/app/service/match.service';
 export class EventsComponent implements OnInit {
   myForm: FormGroup;
   types: string[] = ['Red Card', 'Yellow Card', 'Goal', 'Own Goal'];
-  private matchObj: Object = {};
-  private matchId:string;
+  private matchObj: any;
   minute:Number;
   constructor(private formBuilder: FormBuilder,private matchDetailService: MatchDetailService,private matchService:MatchService) {
 
@@ -24,6 +23,7 @@ export class EventsComponent implements OnInit {
 
     });
 
+    this.matchObj=this.matchDetailService.getCurrentMatchObj();
 
    }
 
@@ -31,9 +31,13 @@ export class EventsComponent implements OnInit {
     this.matchDetailService.emitter.subscribe(
       data => {
         this.matchObj = data;
-        this.matchId=data._id;
         this.minute = Math.floor(Math.abs(((new Date(data.startDateTime).getTime()) - (new Date()).getTime()) / 60000));
+      }
+    );
 
+    this.matchDetailService.minuteEmitter.subscribe(
+      data => {
+        this.minute = data;
       }
     );
   }
@@ -45,9 +49,9 @@ export class EventsComponent implements OnInit {
     }
     const event = this.myForm.value;
     event.minute = this.minute;
-    this.matchService.addEvent(this.matchId,event)
+    this.matchService.addEvent(this.matchObj._id,event)
       .subscribe(data => {
-       console.log("saved");
+        this.myForm.reset();
       }, error => {
         console.log(error);
       });

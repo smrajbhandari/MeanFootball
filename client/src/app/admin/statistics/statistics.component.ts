@@ -10,8 +10,7 @@ import { MatchService } from 'src/app/service/match.service';
 })
 export class StatisticsComponent implements OnInit {
   myForm: FormGroup;
-  private matchObj: Object = {};
-  private matchId:string;
+  private matchObj: any;
   constructor(private formBuilder: FormBuilder,private matchDetailService: MatchDetailService,private matchService:MatchService) {
     this.myForm = formBuilder.group({
       'shotsOnTargetHome': ['', Validators.required],
@@ -31,12 +30,14 @@ export class StatisticsComponent implements OnInit {
 
 
     });
+
+    this.matchObj=this.matchDetailService.getCurrentMatchObj();
+
   }
   ngOnInit() {
     this.matchDetailService.emitter.subscribe(
       data => {
         this.matchObj = data;
-        this.matchId=data._id;
       }
     );
   }
@@ -46,9 +47,9 @@ export class StatisticsComponent implements OnInit {
       return;
     }
     const statistics = this.myForm.value;
-    this.matchService.addStatistics(this.matchId,statistics)
+    this.matchService.addStatistics(this.matchObj._id,statistics)
       .subscribe(data => {
-       console.log("saved");
+        this.myForm.reset();
       }, error => {
         console.log(error);
       });
