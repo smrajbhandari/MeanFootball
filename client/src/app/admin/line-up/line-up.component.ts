@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { MatchUpdateService } from '../match-update.service';
+import { MatchDetailService } from 'src/app/service/match-detail.service';
+import { MatchService } from 'src/app/service/match.service';
 
 @Component({
   selector: 'app-line-up',
@@ -10,34 +11,48 @@ import { MatchUpdateService } from '../match-update.service';
 export class LineUpComponent implements OnInit {
   myForm: FormGroup;
 
-  sides: string[] = ['Home', 'AWAY'];
+  sides: string[] = ['HOME', 'AWAY'];
+  private matchObj: any;
 
   minute: Number;
-  time1 = new Date(2019, 4, 21, 4, 10, 0, 0);
-  time2 = new Date(2019, 4, 21, 4, 17, 0, 0);
-  constructor(private formBuilder: FormBuilder, private matchUpdate: MatchUpdateService) {
+  constructor(private formBuilder: FormBuilder, private matchDetailService: MatchDetailService,private matchService:MatchService) {
     this.myForm = formBuilder.group({
       'side': ['', Validators.required],
       'playerIn': ['', Validators.required],
       'playerOut': ['', Validators.required]
 
     });
+
+    this.matchObj=this.matchDetailService.getCurrentMatchObj();
+
   }
 
   ngOnInit() {
-    this.minute = Math.abs((this.time1.getTime() - this.time2.getTime()) / 60000);
-
+    this.matchDetailService.emitter.subscribe(
+      data => {
+        this.matchObj = data;
+        this.minute = Math.floor(Math.abs(((new Date(data.startDateTime).getTime()) - (new Date()).getTime()) / 60000));
+           }
+    );
+    this.matchDetailService.minuteEmitter.subscribe(
+      data => {
+        this.minute = data;
+      }
+    );
   }
 
   onSubmit() {
-    const substitution = this.myForm.value;
-    substitution.minute = this.minute;
-    console.log("event----->> " + substitution.minute);
-    console.log("event----->> " + substitution.side);
-    console.log("event----->> " + substitution.playerIn);
-    console.log("event----->> " + substitution.playerOut);
-
-
+    if (this.myForm.invalid) {
+      return;
+    }
+    const substitute = this.myForm.value;
+    substitute.minute = this.minute;
+    this.matchService.addSubstitute(this.matchObj._id,substitute)
+      .subscribe(data => {
+       this.myForm.reset();
+      }, error => {
+        console.log(error);
+      });
   }
 
 }

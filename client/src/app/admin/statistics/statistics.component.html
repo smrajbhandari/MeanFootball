@@ -1,3 +1,72 @@
-<p>
-  statistics works!
-</p>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="statistics-form">
+  <mat-card>
+    <mat-card-title class="title-label">Statistics</mat-card-title>
+    <label class="head-label">HOME </label>                                 <label class="head-label">AWAY</label>
+
+    <mat-card-content>
+      <div>
+        <mat-form-field class="input-full-width">
+          <input matInput placeholder="Shots On Target" type="number" formControlName="shotsOnTargetHome" required>
+        </mat-form-field>
+        <mat-form-field class="input-full-width">
+          <input matInput placeholder="Shots On Target" type="number" formControlName="shotsOnTargetAway" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="input-full-width">
+          <input matInput placeholder="Shots Off Target" type="number" formControlName="shotsOffTargetHome" required>
+        </mat-form-field>
+        <mat-form-field class="input-full-width">
+          <input matInput placeholder="Shots Off Target" type="number" formControlName="shotsOffTargetAway" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="input-full-width">
+          <input matInput placeholder="Possession" type="number" formControlName="possessionHome" required>
+        </mat-form-field>
+        <mat-form-field class="input-full-width">
+          <input matInput placeholder="Possession" type="number" formControlName="possessionAway" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="input-full-width">
+          <input matInput placeholder="Corners" type="number" formControlName="cornersHome" required>
+        </mat-form-field>
+        <mat-form-field class="input-full-width">
+          <input matInput placeholder="Corners" type="number" formControlName="cornersAway" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="input-full-width">
+          <input matInput placeholder="Offsides" type="number" formControlName="offsidesHome" required>
+        </mat-form-field>
+        <mat-form-field class="input-full-width">
+          <input matInput placeholder="Offsides" type="number" formControlName="offsidesAway" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="input-full-width">
+          <input matInput placeholder="Fouls" type="number" formControlName="foulsHome" required>
+        </mat-form-field>
+        <mat-form-field class="input-full-width">
+          <input matInput placeholder="Fouls" type="number" formControlName="foulsAway" required>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="input-full-width">
+          <input matInput placeholder="GoalKicks" type="number" formControlName="goalKicksHome" required>
+        </mat-form-field>
+        <mat-form-field class="input-full-width">
+          <input matInput placeholder="GoalKicks" type="number" formControlName="goalKicksAway" required>
+        </mat-form-field>
+      </div>
+
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary"  [disabled]="!myForm.valid">Save</button>
+    </mat-card-actions>
+  </mat-card>
+
+
+
+</form>

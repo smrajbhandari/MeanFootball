@@ -44,7 +44,7 @@ const MatchSchema = mongoose.Schema({
         {
             minute: Number,
             player: String,
-            type: String, // Red, Yellow, Goal
+            event: String,  // Red, Yellow, Goal
             homeScore: Number,
             awayScore: Number
         }

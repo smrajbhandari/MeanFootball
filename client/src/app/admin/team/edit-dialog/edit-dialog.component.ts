@@ -33,8 +33,6 @@ export class EditDialogComponent implements OnInit {
 
     this.team = this.teamService.findOne(this.data._id)
       .pipe(tap(team => {
-        console.log(team);
-        
         team.players.forEach(player => {
           this.addPlayer();
         });

@@ -21,7 +21,7 @@ mongoose.connect(process.env.URL, {
 });
 
 
-app.all('api/*', checkAuth);
+// app.all('/api/*', checkAuth);
 
 app.get('/', (req, res) => {
     res.json({"message": "Welcome to API using Node."});
