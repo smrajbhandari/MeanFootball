@@ -10,6 +10,8 @@
       <mat-error *ngIf="submitted && f.coach.hasError('required')">Coach is required</mat-error>
     </mat-form-field>
 
+    <h4>Players</h4>
+
     <div formArrayName="players">
       <div *ngFor="let player of myForm['controls'].players['controls']; let ix=index">
         <div formGroupName="{{ix}}">
