@@ -27,6 +27,7 @@ export class CreateMatchComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.formBuilder.group({
       'leagueName': ['', Validators.required],
+      'startDateTime': ['', Validators.required],
       'homeTeamId': ['', Validators.required],
       'awayTeamId': ['', Validators.required]
     });
