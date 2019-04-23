@@ -1,5 +1,12 @@
 <mat-toolbar color="primary">
-  Create new Match
+  <mat-toolbar-row>
+    <span>Create New Match</span>
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button [routerLink]="['/main']">
+      <mat-icon aria-label="Home">home</mat-icon>
+    </button>
+  </mat-toolbar-row>
 </mat-toolbar>
 
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="match-form">
