@@ -43,7 +43,11 @@ const routes: Routes = [
     component:CreateMatchComponent,
     canActivate: [AdminGuardGuard]
   },
-  { path: 'teams', component: TeamComponent }
+  { 
+    path: 'teams', 
+    component: TeamComponent,
+    canActivate: [AdminGuardGuard]
+  }
 
 ];
 
