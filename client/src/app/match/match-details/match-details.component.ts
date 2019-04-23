@@ -101,9 +101,7 @@ export class MatchDetailsComponent implements OnInit {
       data => {
           this.matchId = data._id;
           this.match=data;
-          console.log("MatchDetailsComponent Receive the _id="+this.matchId);
-          console.log("this the match="+ this.match.homeTeam.name );
-          console.log(this.match);
+         
       }
   );
   }

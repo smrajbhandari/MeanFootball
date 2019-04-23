@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { MatchUpdateService } from '../match-update.service';
+import { MatchDetailService } from 'src/app/service/match-detail.service';
+import { MatchService } from 'src/app/service/match.service';
 
 @Component({
   selector: 'app-events',
@@ -10,11 +11,12 @@ import { MatchUpdateService } from '../match-update.service';
 export class EventsComponent implements OnInit {
   myForm: FormGroup;
   types: string[] = ['Red Card', 'Yellow Card', 'Goal', 'Own Goal'];
-
-  constructor(private formBuilder: FormBuilder, private matchUpdate: MatchUpdateService) {
+  private matchObj: Object = {};
+  private matchId:string;
+  minute:Number;
+  constructor(private formBuilder: FormBuilder,private matchDetailService: MatchDetailService,private matchService:MatchService) {
 
     this.myForm=formBuilder.group({
-      'minute': ['', Validators.required],
       'player': ['', Validators.required],
       'type': ['', Validators.required],
       'homeScore': ['', Validators.required],
@@ -26,11 +28,28 @@ export class EventsComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.matchDetailService.emitter.subscribe(
+      data => {
+        this.matchObj = data;
+        this.matchId=data._id;
+        this.minute = Math.floor(Math.abs(((new Date(data.startDateTime).getTime()) - (new Date()).getTime()) / 60000));
+
+      }
+    );
   }
 
 
   onSubmit() {
+    if (this.myForm.invalid) {
+      return;
+    }
     const event = this.myForm.value;
-    console.log("event----->> "+event.type);
+    event.minute = this.minute;
+    this.matchService.addEvent(this.matchId,event)
+      .subscribe(data => {
+       console.log("saved");
+      }, error => {
+        console.log(error);
+      });
   }
 }

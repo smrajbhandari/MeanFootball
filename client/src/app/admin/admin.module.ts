@@ -9,20 +9,19 @@ import { LineUpComponent } from './line-up/line-up.component';
 import { AdminRoutingModule } from './admin-routing/admin-routing.module';
 import { AdminComponent } from './admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatchUpdateComponent } from './match-update/match-update.component';
 
 
 
 
 @NgModule({
-  declarations: [AdminComponent, CreateMatchComponent, EventsComponent, CommentaryComponent, StatisticsComponent, LineUpComponent, AdminComponent, MatchUpdateComponent],
+  declarations: [AdminComponent, CreateMatchComponent, EventsComponent, CommentaryComponent, StatisticsComponent, LineUpComponent, AdminComponent],
   imports: [
     AdminRoutingModule,
     CommonModule,
     MaterialModule,
     ReactiveFormsModule
   ],
-  exports: [AdminRoutingModule, AdminComponent,CreateMatchComponent, EventsComponent, CommentaryComponent, StatisticsComponent, LineUpComponent,MatchUpdateComponent],
+  exports: [AdminRoutingModule, AdminComponent,CreateMatchComponent, EventsComponent, CommentaryComponent, StatisticsComponent, LineUpComponent],
   bootstrap: [],
 
 })

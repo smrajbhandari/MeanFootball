@@ -22,4 +22,22 @@ export class MatchService {
       return  this.http.get(`${this.API_URL}/api/match/`+matID);
     }
 
+    addSubstitute(id,substitute){
+      return  this.http.patch(`${this.API_URL}/api/match/${id}/substitute`,substitute);
+    }
+
+
+    addCommentary(id,commentary){
+      return  this.http.patch(`${this.API_URL}/api/match/${id}/commentary`,commentary);
+    }
+
+
+    addEvent(id,event){
+      return  this.http.patch(`${this.API_URL}/api/match/${id}/event`,event);
+    }
+
+
+    addStatistics(id,event){
+      return  this.http.patch(`${this.API_URL}/api/match/${id}/statistic`,event);
+    }
 }
