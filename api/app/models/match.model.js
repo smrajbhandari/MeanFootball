@@ -4,6 +4,7 @@ const MatchSchema = mongoose.Schema({
     leagueName: String,
     startDateTime: Date,
     homeTeam: {
+        _id: String,
         name: String,
         coach: String,
         players: [
@@ -22,6 +23,7 @@ const MatchSchema = mongoose.Schema({
         ]
     },
     awayTeam: {
+        _id: String,
         name: String,
         coach: String,
         players: [

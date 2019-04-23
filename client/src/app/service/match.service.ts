@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Match } from '../models/match';
+import { Observable } from 'rxjs';
 //import axios from "axios";
 
 @Injectable({
@@ -12,6 +14,11 @@ export class MatchService {
 
   constructor(private http:HttpClient) { }
   // probably this need like parameter the date
+
+    create(match: Match): Observable<Match> {
+      return this.http
+        .post<Match>(`${this.API_URL}/api/match`, match);
+    }
   
     findAll(){
       // console.log(`calling ${this.API_URL}/api/match`)

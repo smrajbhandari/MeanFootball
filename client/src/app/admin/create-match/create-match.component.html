@@ -1,3 +1,35 @@
-<p>
-  create-match works!
-</p>
+<mat-toolbar color="primary">
+  Create Match
+</mat-toolbar>
+
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="match-form">
+  <mat-card>
+    <mat-card-content>
+      <mat-form-field class="input-full-width">
+        <input matInput placeholder="League Name" formControlName="leagueName" required>
+        <mat-error *ngIf="submitted && f.leagueName.hasError('required')">League name is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Home Team" formControlName="homeTeamId">
+          <mat-option *ngFor="let team of teams" value="{{team._id}}">{{team.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="submitted && f.homeTeamId.hasError('required')">Home team is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-select placeholder="Away Team" formControlName="awayTeamId">
+          <mat-option *ngFor="let team of teams" value="{{team._id}}">{{team.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="submitted && f.awayTeamId.hasError('required')">Away team is required</mat-error>
+      </mat-form-field>
+
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary">Create</button>
+      <button mat-button [routerLink]="['/main']">Cancel</button>
+    </mat-card-actions>
+
+  </mat-card>
+</form>

@@ -15,15 +15,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { TokenInterceptor } from './token.interceptor';
 import { AdminModule } from './admin/admin.module';
 
-import {MainModule} from './main/main.module'
+import {MainModule} from './main/main.module';
+import { MatInputModule, MatButtonModule, MatSelectModule, MatRadioModule, MatCardModule } from '@angular/material'
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
-    LoginComponent
-    
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +33,12 @@ import {MainModule} from './main/main.module'
     HttpClientModule,
     ReactiveFormsModule,
     AdminModule,
-    MainModule
+    MainModule,
+    MatInputModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatRadioModule,
+    MatCardModule
     ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
