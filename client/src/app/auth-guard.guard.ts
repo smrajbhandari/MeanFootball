@@ -8,7 +8,7 @@ export class AuthGuardService implements CanActivate {
   constructor( public router: Router) {}
   canActivate(): boolean {
     const token = localStorage.getItem('_token');
-    if (!token) {
+    if (!(helper.decodeToken(token) && helper.decodeToken(token).email)) {
       this.router.navigate(['login']);
       return false;
     }
