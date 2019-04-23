@@ -1,4 +1,29 @@
- <!-- <mat-grid-list  cols="2" >
+
+<div>
+
+<mat-sidenav-container class="example-container" >
+    <mat-sidenav mode="side" opened><app-list-matches></app-list-matches></mat-sidenav>
+    <mat-sidenav-content>
+        <mat-toolbar>
+          <span>   - -     </span>
+            <button mat-button [routerLink]="['/teams']">Teams</button>
+            <button mat-button [routerLink]="['/create']">Create Match</button>
+            <button mat-button>Logout</button>
+          </mat-toolbar>
+        <!-- <button mat-button [matMenuTriggerFor]="/signup">Admin</button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item [matMenuTriggerFor]="app-create-match" >Create - league</button>
+          <button mat-menu-item>Create - Match</button>
+        </mat-menu> -->
+      <mat-grid-list  cols="1" >
+        <mat-grid-tile><app-match-details></app-match-details></mat-grid-tile>
+        <mat-grid-tile *ngIf="show"><app-admin></app-admin></mat-grid-tile>
+      </mat-grid-list></mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
+
+<!-- <mat-grid-list  cols="2" >
   <mat-grid-tile rowspan="2" rowHeight="2:1" ><app-list-matches></app-list-matches></mat-grid-tile>
   <mat-grid-tile><app-match-details></app-match-details></mat-grid-tile>
   <mat-grid-tile class="strictSpace"><app-admin></app-admin></mat-grid-tile>
@@ -10,14 +35,3 @@
     <mat-sidenav-content><app-admin></app-admin></mat-sidenav-content>
     
   </mat-sidenav-container> -->
-
-<mat-sidenav-container class="example-container" >
-  <mat-sidenav mode="side" opened><app-list-matches></app-list-matches></mat-sidenav>
-  <mat-sidenav-content><mat-grid-list  cols="1" >
-      <mat-grid-tile><app-match-details></app-match-details></mat-grid-tile>
-      <mat-grid-tile *ngIf="show"><app-admin></app-admin></mat-grid-tile>
-      <mat-grid-tile *ngIf="show"><app-create-match></app-create-match></mat-grid-tile>
-
-    </mat-grid-list></mat-sidenav-content>
-  
-</mat-sidenav-container>

@@ -29,6 +29,7 @@ app.get('/', (req, res) => {
 
 require('./app/routes/user.routes.js')(app);
 require('./app/routes/match.routes.js')(app);
+require('./app/routes/team.routes.js')(app);
 
 
 app.listen(port, () => `Server is listening on port ${port}`);

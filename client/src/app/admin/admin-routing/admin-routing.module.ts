@@ -6,6 +6,7 @@ import { EventsComponent } from '../events/events.component';
 import { LineUpComponent } from '../line-up/line-up.component';
 import { StatisticsComponent } from '../statistics/statistics.component';
 import { CommentaryComponent } from '../commentary/commentary.component';
+import { TeamComponent } from '../team/team.component';
 import { MainComponent } from 'src/app/main/main.component';
 import { AdminGuardGuard } from 'src/app/admin-guard.guard';
 // import { AdminComponent } from '../admin.component';
@@ -41,7 +42,8 @@ const routes: Routes = [
     path:'create',
     component:CreateMatchComponent,
     canActivate: [AdminGuardGuard]
-  }
+  },
+  { path: 'teams', component: TeamComponent }
 
 ];
 

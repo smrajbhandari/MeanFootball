@@ -1,0 +1,61 @@
+<h1 mat-dialog-title>Edit Team</h1>
+<form *ngIf="team | async; else loading" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div mat-dialog-content>
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name" required>
+      <mat-error *ngIf="submitted && f.name.hasError('required')">Name is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Coach" formControlName="coach" required>
+      <mat-error *ngIf="submitted && f.coach.hasError('required')">Coach is required</mat-error>
+    </mat-form-field>
+
+    <h4>Players</h4>
+
+    <div formArrayName="players">
+      <div *ngFor="let player of myForm['controls'].players['controls']; let ix=index">
+        <div formGroupName="{{ix}}">
+          <mat-form-field>
+            <input matInput placeholder="Name" formControlName="name" required>
+            <mat-error *ngIf="submitted && player.get('name').hasError('required')">Name is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-select placeholder="Position" formControlName="position">
+              <mat-option value="Goalkeeper">Goalkeeper</mat-option>
+              <mat-option value="Full-Back">Full-Back</mat-option>
+              <mat-option value="Wing-Back">Wing-Back</mat-option>
+              <mat-option value="Central Defender/Centre Back">Central Defender/Centre Back</mat-option>
+              <mat-option value="Sweeper">Sweeper</mat-option>
+              <mat-option value="Central Midfield">Central Midfield</mat-option>
+              <mat-option value="Wide Midfield/Winger">Wide Midfield/Winger</mat-option>
+              <mat-option value="Striker/Centre Forward">Striker/Centre Forward</mat-option>
+              <mat-option value="Behind The Striker">Behind The Striker</mat-option>
+              <mat-option value="Substitute">Substitute</mat-option>
+            </mat-select>
+            <mat-error *ngIf="submitted && player.get('position').hasError('required')">Position is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input type="number" matInput placeholder="Number" formControlName="number" required>
+            <mat-error *ngIf="submitted && player.get('number').hasError('required')">Number is required</mat-error>
+          </mat-form-field>
+
+          <mat-checkbox formControlName="substitute">Substitute</mat-checkbox>
+
+          <button mat-button (click)="removePlayer(ix)">Remove Player</button>
+        </div>
+      </div>
+    </div>
+    <button mat-button (click)="addPlayer()">Add Player</button>
+
+  </div>
+  <div mat-dialog-actions>
+    <button mat-raised-button [type]="submit" color="primary">Save</button>
+    <button mat-button tabindex="-1" mat-dialog-close>Cancel</button>
+  </div>
+</form>
+
+<ng-template #loading>
+  Loading Team...
+</ng-template>
