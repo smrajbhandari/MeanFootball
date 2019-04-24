@@ -1,13 +1,15 @@
-
 <div>
-
 <mat-sidenav-container class="example-container" >
     <mat-sidenav mode="side" opened><app-list-matches></app-list-matches></mat-sidenav>
     <mat-sidenav-content>
-        <mat-toolbar>
+        <mat-toolbar color="primary">
+            <mat-toolbar-row>
+                <span>Home</span>
+                <span class="example-spacer"></span>
             <button *ngIf="show" mat-button [routerLink]="['/teams']">Teams</button>
             <button *ngIf="show" mat-button [routerLink]="['/create']">Create Match</button>
             <button mat-raised-button (click)="openDialog()">Logout</button>
+            </mat-toolbar-row>
           </mat-toolbar>
       <mat-grid-list  cols="1" >
         <mat-grid-tile><app-match-details></app-match-details></mat-grid-tile>

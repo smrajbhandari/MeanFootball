@@ -1,7 +1,9 @@
 table {
     width: 600px;
   }
-
+  .mat-row:hover {
+    background-color: #3f51b5;;
+  }
   .mat-header-cell .mat-sort-header-sorted {
     color: #0A0A0A;
   }
