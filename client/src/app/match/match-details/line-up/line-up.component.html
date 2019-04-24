@@ -11,30 +11,38 @@
     <tr>
       <td *ngIf="match.homeTeam.substitutes != null">
         <table *ngFor="let par of match.homeTeam.substitutes" >
-          <tr><td rowspan="2">{{par.minute }}</td>
-            <td><img src="assets/icons/green2.gif" alt="Player in" height="20" width="20">{{par.playerIn}}</td></tr>
+          <tr><td rowspan="2">{{par.minute }}'</td>
+            <td><img src="assets/icons/green.gif" alt="Player in" height="20" width="20">{{par.playerIn}}</td></tr>
           <tr><td>
             <img src="assets/icons/out.gif" class="rotate90"  alt="Player Out" height="20" width="20"> 
             {{par.playerOut }}</td></tr> 
         </table> 
       </td><td *ngIf="match.awayTeam.substitutes != null" class="awaytd" >
           <table *ngFor="let par of match.awayTeam.substitutes" >
-            <tr><td rowspan="2">{{par.minute }}</td>
-              <td><img src="assets/icons/green2.gif" alt="Player in" height="20" width="20">{{par.playerIn}}</td></tr>
+            <tr><td rowspan="2">{{par.minute }}'</td>
+              <td><img src="assets/icons/green.gif" class="rotate90" alt="Player in" height="20" width="20">{{par.playerIn}}</td></tr>
             <tr><td>
-              <img src="assets/icons/out.gif" class="rotate90"  alt="Player Out" height="20" width="20"> 
+              <img src="assets/icons/out.gif" class="rotate270"  alt="Player Out" height="20" width="20"> 
               {{par.playerOut }}</td></tr> 
           </table> 
         </td>
-    </tr>
-    <tr>
-      <td>asdf</td>
-      <td>adsf</td>
     </tr>
     <tr>
         <th colspan="2" >substitute players</th>
     </tr>
     <tr>
       <th>Home Team</th><th>Away Team</th>
-    </tr>  
+    </tr> 
+    <tr>
+        <td><table *ngIf="match.homeTeam.players != null">
+            <tr *ngFor="let par of match.homeTeam.players" >
+              <td>{{par.number }}</td><td>{{par.name }} - {{par.position}}</td></tr> 
+            </table> 
+          </td>
+          <td><table *ngIf="match.awayTeam.players != null">
+              <tr *ngFor="let par of match.awayTeam.players" >
+                <td>{{par.number }}</td><td>{{par.name }} - {{par.position}}</td></tr> 
+              </table> 
+            </td>
+    </tr> 
 </table>

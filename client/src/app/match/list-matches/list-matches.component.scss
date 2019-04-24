@@ -2,14 +2,18 @@ table {
     width: 600px;
   }
 
-  .rotate90 {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
+  .mat-header-cell .mat-sort-header-sorted {
+    color: #0A0A0A;
+  }
+
+md-pagination-wrapper {
+    width:auto !important;
 }
 
-.awaytd{
-  text-align: right;
-}
+md-row:nth-child(even){
+  background-color:#EDF1F5;
+  }
+
+md-row:nth-child(odd){
+  background-color:#FDFDFB;
+  }
