@@ -1,12 +1,16 @@
 mat-sidenav-content {
     //background-color: aqua;
-    background-image: url('/client/src/assets/icons/backgroud1.jpg');
+    //background-image: url('/client/src/assets/icons/backgroud1.jpg');
 }
 mat-grid-tite  {
     height: 50%;
     width: 50%;
     max-width: 500px;
     max-height: 500px;
+}
+
+.control {
+    background-color:#3d4888; 
 }
 
 .example-spacer {

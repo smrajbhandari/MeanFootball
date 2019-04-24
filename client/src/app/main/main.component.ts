@@ -2,6 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { LogoutComponent } from '../logout/logout.component';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { FormControl } from '@angular/forms';
 const helper = new JwtHelperService();
 
 @Component({
@@ -11,6 +12,9 @@ const helper = new JwtHelperService();
 })
 export class MainComponent implements OnInit {
   show: boolean;
+
+  mode = new FormControl('side');
+//  shouldRun = [/(^|\.)plnkr\.co$/, /(^|\.)stackblitz\.io$/].some(h => h.test(window.location.host));
 
   constructor(public dialog: MatDialog) { 
     const token = localStorage.getItem('_token');

@@ -5,6 +5,7 @@ import { MaterialModule } from '../material.module';
 import { MatchModule } from '../match/match.module';
 import { AdminModule } from '../admin/admin.module';
 import { LogoutComponent } from '../logout/logout.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -14,7 +15,8 @@ import { LogoutComponent } from '../logout/logout.component';
     CommonModule,
     MaterialModule,
     MatchModule,
-    AdminModule        
+    AdminModule,
+    ReactiveFormsModule         
   ],
   exports: [ MainComponent],
   bootstrap: [],

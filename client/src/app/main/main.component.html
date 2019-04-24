@@ -1,6 +1,19 @@
 <div>
 <mat-sidenav-container class="example-container" >
-    <mat-sidenav mode="side" opened><app-list-matches></app-list-matches></mat-sidenav>
+    <!-- <mat-sidenav mode="side" opened><app-list-matches></app-list-matches></mat-sidenav> -->
+
+    <mat-sidenav #sidenav [mode]="mode.value" opened>
+        <p class="control"><button mat-button (click)="sidenav.toggle()">List</button>
+          <mat-radio-group class="example-radio-group" [formControl]="mode">
+            <label>Mode:</label>   /
+            <mat-radio-button value="over">Over</mat-radio-button>/
+            <mat-radio-button value="side">Side</mat-radio-button>/
+            <mat-radio-button value="push">Push</mat-radio-button>
+          </mat-radio-group>
+        </p>
+        <app-list-matches></app-list-matches>
+      </mat-sidenav>
+
     <mat-sidenav-content>
         <mat-toolbar color="primary">
             <mat-toolbar-row>
@@ -11,9 +24,16 @@
             <button mat-raised-button (click)="openDialog()">Logout</button>
             </mat-toolbar-row>
           </mat-toolbar>
-      <mat-grid-list  cols="1" >
-        <mat-grid-tile><app-match-details></app-match-details></mat-grid-tile>
-        <mat-grid-tile *ngIf="show"><app-admin></app-admin></mat-grid-tile>
-      </mat-grid-list></mat-sidenav-content>
+    <p class="control" ><button mat-button (click)="sidenav.toggle()">List</button>
+      <mat-radio-group class="example-radio-group" [formControl]="mode">
+          <label>Mode:</label> |
+          <mat-radio-button value="over">Over</mat-radio-button>|
+          <mat-radio-button value="side">Side</mat-radio-button>|
+          <mat-radio-button value="push">Push</mat-radio-button>
+        </mat-radio-group></p>
+    <p>
+      <div><app-match-details></app-match-details></div>
+      <div *ngIf="show"><app-admin></app-admin></div>
+    </mat-sidenav-content>
   </mat-sidenav-container>
 </div>
