@@ -25,7 +25,7 @@ export class MatchService {
       return  this.http.get(`${this.API_URL}/api/match`);
     }
     find(matID){
-      console.log(`calling ${this.API_URL}/api/match/`+matID)
+      //console.log(`calling ${this.API_URL}/api/match/`+matID)
       return  this.http.get(`${this.API_URL}/api/match/`+matID);
     }
 

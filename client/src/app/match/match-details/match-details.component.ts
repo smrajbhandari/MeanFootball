@@ -19,7 +19,28 @@ export class MatchDetailsComponent implements OnInit {
     @ViewChild(MatPaginator) paginator: MatPaginator;
 
     matchId:String;
-    match:{
+    match:matchSTR;
+  ngOnInit() {
+    this.matchDetailService.emitter.subscribe(
+      data => {
+          this.matchId = data._id;
+          this.match=data;
+          this.dataSourceEvents=new MatTableDataSource<eventSTR>(data.events);
+          setTimeout(() => this.dataSourceEvents.paginator = this.paginator,0);
+      }
+  );
+  //this.dataSourceEvents.paginator = this.paginator;
+  }
+}
+
+export interface eventSTR {
+    minute: Number,
+        player: String,
+        event: String,  // Red, Yellow, Goal
+        homeScore: Number,
+        awayScore: Number
+  }
+  export interface matchSTR {
     leagueName: String,
     startDateTime: Date,
     homeTeam: {
@@ -104,24 +125,4 @@ export class MatchDetailsComponent implements OnInit {
             awayTeam: Number
         }
     }
-};
-  ngOnInit() {
-    this.matchDetailService.emitter.subscribe(
-      data => {
-          this.matchId = data._id;
-          this.match=data;
-          this.dataSourceEvents=new MatTableDataSource<eventSTR>(data.events);
-          setTimeout(() => this.dataSourceEvents.paginator = this.paginator,0);
-      }
-  );
-  //this.dataSourceEvents.paginator = this.paginator;
-  }
 }
-
-export interface eventSTR {
-    minute: Number,
-        player: String,
-        event: String,  // Red, Yellow, Goal
-        homeScore: Number,
-        awayScore: Number
-  }
