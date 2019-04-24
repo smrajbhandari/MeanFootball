@@ -13,11 +13,15 @@ export class LineUpComponent implements OnInit {
 
   constructor(private matchDetailService:MatchDetailService,
     private teamService: TeamService) {
-      this.match= this.matchDetailService.getCurrentMatchObj();
+      this.match= this.matchDetailService.getCurrentMatchLineup();
      }
 
   ngOnInit() {
-    this.match= this.matchDetailService.getCurrentMatchObj();
+    this.match= this.matchDetailService.getCurrentMatchLineup();
+    this.matchDetailService.emitter.subscribe(data=>{
+      this.match=data;
+    });
+    //console.log(this.match);
   }
 
 }

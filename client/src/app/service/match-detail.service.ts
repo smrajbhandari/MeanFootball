@@ -5,6 +5,7 @@ import { MatchService } from './match.service';
 @Injectable()
 export class MatchDetailService {
   private matchObj:any;
+  private matchLineUp:any;
   constructor(private matchService:MatchService) { }
 
   emitter = new EventEmitter<Object>();
@@ -26,4 +27,35 @@ export class MatchDetailService {
   getCurrentMatchObj(){
     return this.matchObj;
   }
+  getCurrentMatchLineup(){
+    if(this.matchObj!=null)
+    {
+    this.matchLineUp=this.matchObj;
+    }
+    else{
+      this.matchLineUp.homeTeam.coach="n/a" ;
+      this.matchLineUp.match.awayTeam.coach="n/a";
+    }
+    return this.matchLineUp ;
+  }
+  
 }
+export interface matchLineUpSTR {
+  homeTeamCoach: String,
+  homeTeamSubstitutes: [
+          {
+              minute: Number,
+              playerIn: String,
+              playerOut: String
+          }
+      ],
+      awayTeamCoach: String,
+      awayTeamSubstitutes: [
+              {
+                  minute: Number,
+                  playerIn: String,
+                  playerOut: String
+              }
+          ],      
+        };
+

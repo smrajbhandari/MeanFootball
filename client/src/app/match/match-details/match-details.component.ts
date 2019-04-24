@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild, AfterViewInit } from '@angular/core';
 import { MatchDetailService } from 'src/app/service/match-detail.service';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
 
@@ -9,7 +9,7 @@ import {MatPaginator, MatTableDataSource} from '@angular/material';
   styleUrls: ['./match-details.component.scss']
 })
 
-export class MatchDetailsComponent implements OnInit {
+export class MatchDetailsComponent implements OnInit, AfterViewInit  {
     constructor(private matchDetailService:MatchDetailService) { 
         
     }
@@ -29,8 +29,12 @@ export class MatchDetailsComponent implements OnInit {
           setTimeout(() => this.dataSourceEvents.paginator = this.paginator,0);
       }
   );
+  
   //this.dataSourceEvents.paginator = this.paginator;
   }
+  ngAfterViewInit(){
+    this.dataSourceEvents.paginator = this.paginator;
+    }
 }
 
 export interface eventSTR {
